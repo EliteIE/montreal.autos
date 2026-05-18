@@ -396,6 +396,7 @@ img {
 }
 
 .intro-strip,
+.buyer-intent,
 .stock-showcase,
 .services-section,
 .related-section,
@@ -410,6 +411,42 @@ img {
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
   gap: 22px;
   align-items: start;
+}
+
+.intent-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.intent-card {
+  display: grid;
+  gap: 8px;
+  align-content: space-between;
+  min-height: 124px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+  text-align: left;
+  cursor: pointer;
+}
+
+.intent-card strong {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.intent-card span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.intent-card.is-active {
+  border-color: color-mix(in srgb, var(--brand) 50%, white);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 16%, transparent), var(--shadow);
 }
 
 .intro-strip__copy,
@@ -495,6 +532,10 @@ img {
 .related-card {
   overflow: hidden;
   scroll-snap-align: start;
+}
+
+.inventory-slide.is-hidden {
+  display: none;
 }
 
 .inventory-slide__media,
@@ -1085,6 +1126,7 @@ body[data-dealer="montreal-autos"] .step-card span {
   .detail-points,
   .vehicle-detail-grid,
   .vehicle-info-grid,
+  .intent-grid,
   .intro-strip {
     grid-template-columns: 1fr 1fr;
   }
@@ -1124,6 +1166,7 @@ body[data-dealer="montreal-autos"] .step-card span {
   .detail-points,
   .vehicle-detail-grid,
   .vehicle-info-grid,
+  .intent-grid,
   .intro-strip,
   .intro-strip__stats {
     grid-template-columns: 1fr;

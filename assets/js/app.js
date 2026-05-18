@@ -32,6 +32,19 @@
     return Array.isArray(vehicle.images) ? vehicle.images.filter(Boolean) : [];
   }
 
+  function getVehicleTags(vehicle) {
+    const tags = ["all"];
+    const segment = (vehicle.segment || "").toLowerCase();
+    const km = (vehicle.km || "").toLowerCase();
+
+    if (segment.includes("pickup")) tags.push("work");
+    if (segment.includes("suv") || segment.includes("crossover")) tags.push("family");
+    if (segment.includes("hatch") || segment.includes("sedan")) tags.push("city");
+    if (km.includes("0 km") || km.includes("0km")) tags.push("new");
+
+    return [...new Set(tags)];
+  }
+
   function buildBrandMark(dealer, detailLabel) {
     const secondaryLabel = detailLabel || dealer.wordmarkSecondary || dealer.eyebrow;
     const logo = dealer.logo
@@ -73,8 +86,9 @@
   }
 
   function buildInventorySlide(vehicle) {
+    const tags = getVehicleTags(vehicle).join(" ");
     return `
-      <article class="inventory-slide">
+      <article class="inventory-slide" data-stock-card data-tags="${tags}">
         <div class="inventory-slide__media">
           ${buildVehicleVisual(vehicle, true)}
           <span class="inventory-slide__badge">${vehicle.badge}</span>
@@ -90,11 +104,49 @@
           <p class="inventory-slide__meta">${vehicle.segment} · ${vehicle.transmission} · ${vehicle.fuel}</p>
           <p class="inventory-slide__copy">${vehicle.description}</p>
           <div class="inventory-slide__footer">
-            <a class="button" href="./vehiculo.html?modelo=${vehicle.id}">Ver vehiculo</a>
+            <a class="button" href="./vehiculo.html?modelo=${vehicle.id}">Ver fotos y detalles</a>
             <span class="inventory-slide__hook">${vehicle.hook}</span>
           </div>
         </div>
       </article>
+    `;
+  }
+
+  function buildBuyerIntentSection(dealer) {
+    return `
+      <section class="buyer-intent">
+        <div class="section-heading">
+          <p class="eyebrow">Empezá por acá</p>
+          <h2>¿Qué tipo de vehículo estás buscando?</h2>
+          <p>Elegí tu camino y te mostramos opciones para mirar ahora o te dejamos el contacto listo para avanzar.</p>
+        </div>
+        <div class="intent-grid">
+          <button class="intent-card is-active" type="button" data-stock-filter="all">
+            <strong>Ver todo</strong>
+            <span>Todos los destacados</span>
+          </button>
+          <button class="intent-card" type="button" data-stock-filter="city">
+            <strong>Auto para ciudad</strong>
+            <span>Prácticos y ágiles</span>
+          </button>
+          <button class="intent-card" type="button" data-stock-filter="family">
+            <strong>SUV o familiar</strong>
+            <span>Más espacio y comodidad</span>
+          </button>
+          <button class="intent-card" type="button" data-stock-filter="work">
+            <strong>Pickup o trabajo</strong>
+            <span>Para laburo y ruta</span>
+          </button>
+          <a class="intent-card" href="${whatsappMessage(dealer, "Hola, quiero consultar opciones de financiacion")}" target="_blank" rel="noreferrer">
+            <strong>Quiero financiación</strong>
+            <span>Te orientamos por WhatsApp</span>
+          </a>
+          <a class="intent-card" href="${whatsappMessage(dealer, "Hola, quiero consultar si toman mi usado")}" target="_blank" rel="noreferrer">
+            <strong>Entrego mi usado</strong>
+            <span>Consultá por toma o permuta</span>
+          </a>
+        </div>
+      </section>
     `;
   }
 
@@ -171,12 +223,14 @@
         </header>
 
         <main>
+          ${buildBuyerIntentSection(dealer)}
+
           <section class="stock-showcase" id="stock">
             <div class="section-heading section-heading--split">
               <div>
                 <p class="eyebrow">Stock destacado</p>
-                <h2>Elegi una unidad y entra al detalle.</h2>
-                <p>El sitio abre mostrando vehiculos: foto, valor de referencia, datos rapidos y acceso directo a la ficha.</p>
+                <h2>Elegí una unidad y mirá todo lo importante antes de escribir.</h2>
+                <p>Fotos, precio de referencia, kilometraje, caja, combustible y acceso directo a la ficha para seguir mirando con calma.</p>
               </div>
               <a class="button button--ghost" href="https://wa.me/${dealer.whatsapp}" target="_blank" rel="noreferrer">Consultar stock</a>
             </div>
@@ -230,9 +284,9 @@
 
           <section class="services-section" id="servicios">
             <div class="section-heading">
-              <p class="eyebrow">Acompanamiento comercial</p>
-              <h2>El stock abre la puerta y el sitio ayuda a cerrar la consulta.</h2>
-              <p>Despues de mirar unidades, el cliente entiende rapido como seguir: escribir, pedir mas datos, coordinar visita o avanzar por financiacion.</p>
+              <p class="eyebrow">Te ayudamos a avanzar</p>
+              <h2>Después de elegir un modelo, el siguiente paso tiene que ser simple.</h2>
+              <p>La idea es que el comprador encuentre rápido cómo seguir: consultar financiación, pedir más fotos, coordinar visita o ver si toman su usado.</p>
             </div>
             <div class="service-grid">
               ${dealer.services
@@ -240,7 +294,7 @@
                   (service, index) => `
                     <article class="service-card">
                       <span class="service-card__index">0${index + 1}</span>
-                      <h3>${index === 0 ? "Mostrar bien el stock" : index === 1 ? "Responder sin friccion" : "Dejar la venta encaminada"}</h3>
+                      <h3>${index === 0 ? "Encontrá tu opción" : index === 1 ? "Consultá sin vueltas" : "Avanzá con seguridad"}</h3>
                       <p>${service}</p>
                     </article>
                   `
@@ -384,7 +438,7 @@
               <p>${vehicle.year} · ${vehicle.km} · ${vehicle.color}</p>
               <div class="contact-band__actions">
                 <a class="button" href="${whatsappMessage(dealer, `Hola, me interesa el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar ahora</a>
-                <a class="button button--ghost" href="${phoneHref(dealer.phone)}">Llamar</a>
+                <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, quiero consultar financiacion para el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar financiación</a>
               </div>
             </div>
           </section>
@@ -395,13 +449,14 @@
             <aside class="vehicle-summary">
               <div class="vehicle-summary__top">
                 <p class="eyebrow">Informacion rapida</p>
-                <h2>Lo importante para decidir si queres seguir con esta unidad.</h2>
+                <h2>Todo lo que normalmente mirás antes de avanzar con una unidad.</h2>
                 <p class="lead">${vehicle.description}</p>
               </div>
 
               <div class="vehicle-summary__cta">
                 <a class="button" href="${whatsappMessage(dealer, `Hola, quiero mas informacion del ${vehicle.name}`)}" target="_blank" rel="noreferrer">Quiero mas informacion</a>
                 <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, me gustaria pedir fotos y video del ${vehicle.name}`)}" target="_blank" rel="noreferrer">Pedir fotos y video</a>
+                <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, quiero saber si toman mi usado por el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar usado en parte de pago</a>
                 <a class="button button--ghost" href="${dealer.mapUrl}" target="_blank" rel="noreferrer">Ver ubicacion</a>
               </div>
 
@@ -423,29 +478,29 @@
 
           <section class="vehicle-info-grid">
             <article class="detail-card detail-card--wide">
-              <p class="eyebrow">Por que mirar esta unidad</p>
-              <h2>Una ficha pensada para que el interes siga despues del primer vistazo.</h2>
+              <p class="eyebrow">¿Por qué puede ir con vos?</p>
+              <h2>Una lectura rápida para decidir si vale la pena venir a verlo o pedir más material.</h2>
               <p>${vehicle.descriptionLong}</p>
               <p>${vehicle.hook}</p>
               <div class="detail-points">
                 <div class="point-card">
-                  <strong>Buena primera impresion</strong>
-                  <p>${vehicle.segment} con una presentacion clara, precio visible y acceso directo a la consulta.</p>
+                  <strong>Qué ofrece esta unidad</strong>
+                  <p>${vehicle.segment} con una presentación clara, precio visible y una ficha que te deja comparar sin perder tiempo.</p>
                 </div>
                 <div class="point-card">
-                  <strong>Datos faciles de leer</strong>
-                  <p>Todo lo que suele mirar un comprador aparece ordenado: ano, kilometraje, caja, combustible y color.</p>
+                  <strong>Datos fáciles de leer</strong>
+                  <p>Año, kilometraje, caja, combustible, color y equipamiento principal en un vistazo.</p>
                 </div>
                 <div class="point-card">
-                  <strong>Salida comercial rapida</strong>
-                  <p>Si interesa, el siguiente paso ya esta listo: WhatsApp, llamada o pedido de fotos y video.</p>
+                  <strong>Cómo seguís</strong>
+                  <p>Si te interesa, podés pedir fotos, video, financiación o consultar si toman tu usado.</p>
                 </div>
               </div>
             </article>
 
             <article class="detail-card">
               <p class="eyebrow">Equipamiento destacado</p>
-              <h2>Lo que mas suele inclinar la balanza</h2>
+              <h2>Lo que más suele inclinar la balanza</h2>
               <ul class="detail-list">
                 ${vehicle.features.map((feature) => `<li>${feature}</li>`).join("")}
               </ul>
@@ -455,18 +510,18 @@
           <section class="sales-steps">
             <article class="step-card">
               <span>01</span>
-              <h3>Te interesa la unidad</h3>
-              <p>Ves fotos, datos rapidos y una propuesta clara para saber si encaja con lo que estas buscando.</p>
+              <h3>Mirá si encaja con lo que buscás</h3>
+              <p>Fotos, datos clave y equipamiento para saber rápido si esta unidad va con vos.</p>
             </article>
             <article class="step-card">
               <span>02</span>
-              <h3>Pedis mas material</h3>
-              <p>Con un clic podes solicitar mas fotos, video, ubicacion o detalles para seguir avanzando sin perder tiempo.</p>
+              <h3>Pedí más fotos, video o financiación</h3>
+              <p>Con un clic podés pedir más material, consultar cuotas o averiguar por entrega de usado.</p>
             </article>
             <article class="step-card">
               <span>03</span>
-              <h3>Pasas a la conversacion</h3>
-              <p>La ficha deja la consulta encaminada para que ventas tome la posta por WhatsApp o llamada.</p>
+              <h3>Coordiná el siguiente paso</h3>
+              <p>Si te cierra, seguís por WhatsApp para reservar, visitar o avanzar con la operación.</p>
             </article>
           </section>
 
@@ -478,15 +533,16 @@
               <p>${dealer.hours}</p>
             </div>
             <div class="contact-band__actions">
-              <a class="button" href="${whatsappMessage(dealer, `Hola, quiero avanzar con el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Quiero avanzar</a>
-              <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, quiero consultar si reciben un usado por el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar entrega</a>
+              <a class="button" href="${whatsappMessage(dealer, `Hola, quiero avanzar con el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Quiero avanzar con esta unidad</a>
+              <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, quiero consultar si reciben un usado por el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar usado en parte de pago</a>
+              <a class="button button--ghost" href="${phoneHref(dealer.phone)}">Llamar</a>
             </div>
           </section>
 
           <section class="related-section">
             <div class="section-heading">
-              <p class="eyebrow">Segui mirando</p>
-              <h2>Otras opciones del mismo concesionario.</h2>
+              <p class="eyebrow">Seguí mirando</p>
+              <h2>Otras opciones del mismo concesionario que te pueden interesar.</h2>
             </div>
             <div class="related-grid">
               ${buildRelatedVehicles(dealer, vehicle.id)}
@@ -619,6 +675,29 @@
     });
   }
 
+  function setupStockFilters() {
+    const buttons = document.querySelectorAll("[data-stock-filter]");
+    const cards = document.querySelectorAll("[data-stock-card]");
+    if (buttons.length === 0 || cards.length === 0) return;
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const filter = button.dataset.stockFilter;
+        buttons.forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+
+        cards.forEach((card) => {
+          const tags = (card.dataset.tags || "").split(" ");
+          const visible = filter === "all" || tags.includes(filter);
+          card.classList.toggle("is-hidden", !visible);
+        });
+
+        const stock = document.getElementById("stock");
+        if (stock) stock.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   function setupCarousels() {
     const controls = document.querySelectorAll("[data-carousel-prev], [data-carousel-next]");
     controls.forEach((control) => {
@@ -649,6 +728,7 @@
     root.innerHTML = buildDealerPage(dealer);
     setupChat(dealer);
     setupCarousels();
+    setupStockFilters();
   }
 
   function renderVehicle() {

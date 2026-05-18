@@ -11,7 +11,7 @@ window.DEALERSHIP_DATA = {
     heroLead:
       "Autos SV arranca mostrando lo que importa: unidades visibles, datos rapidos y una salida directa para hablar con ventas cuando aparece el vehiculo indicado.",
     eyebrow: "La Rioja Capital",
-    tagline: "Autos y motos con respuesta rapida y atencion cercana.",
+    tagline: "Autos y motos para mirar tranquilo y consultar sin vueltas.",
     accent: "#db1f26",
     brandSecondary: "#171717",
     brandContrast: "#ffffff",
@@ -23,11 +23,11 @@ window.DEALERSHIP_DATA = {
     address: "Adolfo E. Davila 247, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Adolfo+E.+Davila+247+La+Rioja",
     hours: "Atencion comercial personalizada en La Rioja Capital.",
-    promise: "Te escuchamos, te mostramos opciones concretas y te ayudamos a avanzar cuando aparezca el vehiculo indicado.",
-    supportMessage: "Atencion rapida, contacto directo y opciones pensadas para que no pierdas tiempo.",
+    promise: "Te mostramos opciones claras, respondemos rapido y te ayudamos a avanzar cuando aparece el vehiculo indicado.",
+    supportMessage: "Atencion rapida, contacto directo y un camino simple para pasar de la mirada a la consulta.",
     stats: [
       { value: "Autos y motos", label: "Opciones para distintos presupuestos y necesidades" },
-      { value: "Respuesta agil", label: "Consultas por WhatsApp para seguir la charla enseguida" },
+      { value: "Consulta rapida", label: "Seguimiento por WhatsApp cuando queres saber mas" },
       { value: "Atencion cercana", label: "Trato claro desde la primera consulta" }
     ],
     highlights: [
@@ -37,16 +37,16 @@ window.DEALERSHIP_DATA = {
     ],
     services: [
       "Te ayudamos a comparar opciones segun presupuesto, uso diario o necesidad de trabajo.",
-      "Seguimiento por WhatsApp para responder rapido y avanzar con la consulta.",
-      "Espacio ideal para publicar oportunidades semanales, ingresos recientes y promos."
+      "Si queres, te contamos formas de pago y te mandamos mas fotos o video por WhatsApp.",
+      "Tambien podes consultar si toman tu usado o coordinar una visita para verlo en persona."
     ],
     testimonials: [
       {
-        quote: "Aca la clave es responder rapido y mostrar opciones que realmente le sirvan al cliente.",
+        quote: "Cuando encontrás una opción clara y te responden rápido, la decisión se vuelve mucho más simple.",
         author: "Mensaje de venta sugerido"
       },
       {
-        quote: "Cuando la consulta entra facil, la conversacion avanza mucho mejor.",
+        quote: "Ver fotos, precio y datos rápidos antes de escribir ayuda mucho a elegir mejor.",
         author: "Experiencia comercial"
       }
     ],
@@ -76,10 +76,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Un hatch moderno, comodo y con muy buena presencia para quien quiere subir de nivel y moverse todos los dias con estilo.",
         descriptionLong:
-          "El 208 Allure es una opcion muy buscada por imagen, confort y practicidad. Funciona muy bien para quien quiere un auto agil para ciudad sin resignar equipamiento ni presencia.",
+          "El 208 Allure es una opcion muy buscada por imagen, confort y practicidad. Va muy bien si queres un auto agil para ciudad, con buen equipamiento y una presencia que se nota.",
         features: ["Pantalla multimedia", "Camara trasera", "Control crucero", "Llantas 16"],
         salesPitch: "Si estas buscando un auto lindo, rendidor y facil de disfrutar todos los dias, esta es una gran alternativa.",
-        hook: "Perfecto para primer cambio de auto o para renovar con algo mas moderno."
+        hook: "Ideal si queres subirte a algo moderno, cómodo y fácil de usar todos los días."
       },
       {
         id: "hilux-dx",
@@ -97,10 +97,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Una pickup noble, rendidora y muy confiable para quien necesita trabajo y tambien comodidad para moverse.",
         descriptionLong:
-          "La Hilux sigue siendo una de las opciones mas pedidas cuando se busca resistencia, reventa y una respuesta conocida. Esta unidad acompana muy bien tanto para uso laboral como mixto.",
+          "La Hilux sigue siendo una de las opciones mas pedidas cuando se busca resistencia, reventa y una respuesta conocida. Esta unidad acompana muy bien tanto para uso laboral como para moverte comodo todos los dias.",
         features: ["Cabina doble", "Aire acondicionado", "Bluetooth", "Caja de carga protegida"],
         salesPitch: "Una opcion fuerte para quien busca una herramienta de trabajo que tambien se luzca fuera del horario laboral.",
-        hook: "Pensada para quienes necesitan rendimiento sin resignar practicidad."
+        hook: "Muy buena si necesitás una herramienta de trabajo que también se disfrute fuera del horario laboral."
       },
       {
         id: "cronos-drive",
@@ -118,10 +118,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Espacioso, practico y con muy buena salida. Un sedan que gusta mucho por comodidad y uso familiar.",
         descriptionLong:
-          "El Cronos sigue siendo un nombre fuerte en Argentina por espacio, baul, mantenimiento amigable y una mecanica conocida. Es un auto muy vendedor para uso diario o familiar.",
+          "El Cronos sigue siendo un nombre fuerte en Argentina por espacio, baul, mantenimiento amigable y una mecanica conocida. Es una opción muy práctica para uso diario, viajes y vida familiar.",
         features: ["Pantalla de 7 pulgadas", "Sensores traseros", "Control de estabilidad", "Amplio baul"],
         salesPitch: "Si queres un 0 km que sirva para todo, con espacio y buena presencia, este entra muy bien en la charla.",
-        hook: "Una propuesta fuerte para familias o para uso diario intensivo."
+        hook: "Una buena elección si querés espacio, comodidad y un 0 km fácil de disfrutar."
       }
     ]
   },
@@ -137,7 +137,7 @@ window.DEALERSHIP_DATA = {
     heroLead:
       "La propuesta abre con el stock, ordena la informacion de cada unidad y deja a Matesich con una presencia mucho mas solida desde el primer vistazo.",
     eyebrow: "Mas de 25 anos en el rubro",
-    tagline: "Seminuevos y 0 km con una imagen solida y atencion personalizada.",
+    tagline: "Seminuevos y 0 km para elegir con calma y avanzar con confianza.",
     accent: "#ef232c",
     brandSecondary: "#1c1c1c",
     brandContrast: "#ffffff",
@@ -150,12 +150,12 @@ window.DEALERSHIP_DATA = {
     address: "Av. Ortiz de Ocampo 2840, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Ortiz+de+Ocampo+2840+La+Rioja",
     hours: "Lunes a viernes de 08:30 a 13:00 y de 17:30 a 21:00. Sabados de 09:00 a 13:00.",
-    promise: "Una trayectoria asi merece una web que transmita orden, confianza y ganas de consultar.",
-    supportMessage: "Mostramos el vehiculo, resolvemos dudas y dejamos la puerta abierta para seguir la conversacion.",
+    promise: "Te mostramos cada unidad con claridad para que puedas decidir con mas confianza antes de escribir.",
+    supportMessage: "Ves la unidad, comparas tranquilo y seguis la conversacion cuando realmente te interesa.",
     stats: [
-      { value: "+25 anos", label: "Experiencia que suma respaldo en cada operacion" },
-      { value: "Usados y 0 km", label: "Variedad para distintos perfiles de cliente" },
-      { value: "Atencion personal", label: "Trato cercano con imagen profesional" }
+      { value: "+25 anos", label: "Trayectoria que da respaldo al momento de comprar" },
+      { value: "Usados y 0 km", label: "Opciones para quien quiere cambiar o dar un salto de categoria" },
+      { value: "Atencion personal", label: "Trato cercano para resolver dudas y avanzar" }
     ],
     highlights: [
       "Concesionaria identificada en Av. Ortiz de Ocampo 2840 con horarios amplios de atencion.",
@@ -163,17 +163,17 @@ window.DEALERSHIP_DATA = {
       "Una presencia digital renovada puede poner esa trayectoria mucho mas en valor."
     ],
     services: [
-      "Consultas ordenadas para usados seleccionados y unidades con perfil premium.",
-      "Canal directo para reserva, toma de usados y seguimiento comercial personalizado.",
-      "Base lista para sumar tasacion online, financiacion y stock filtrable cuando la marca quiera crecer."
+      "Mirá unidades seleccionadas con datos claros, fotos y acceso directo al detalle.",
+      "Si te interesa un modelo, podés consultar por reserva, financiación o parte de pago con tu usado.",
+      "Todo queda preparado para que coordines visita, pidas más material o sigas por WhatsApp."
     ],
     testimonials: [
       {
-        quote: "La confianza tambien se vende con una buena presentacion, no solo con el nombre.",
+        quote: "Cuando la información está bien ordenada, elegir con confianza se vuelve mucho más fácil.",
         author: "Mensaje de venta sugerido"
       },
       {
-        quote: "Cuando el cliente ve orden y criterio, consulta con otra seguridad.",
+        quote: "Ver una unidad bien presentada ayuda a decidir si vale la pena avanzar o pedir más material.",
         author: "Experiencia comercial"
       }
     ],
@@ -206,7 +206,7 @@ window.DEALERSHIP_DATA = {
           "La Corolla Cross combina postura alta, buena calidad percibida y un nombre muy fuerte en el mercado. Es de esas unidades que transmiten confianza incluso antes de verla en persona.",
         features: ["Caja CVT", "Climatizador", "Toyota Safety Sense", "Pantalla 9 pulgadas"],
         salesPitch: "Ideal para quien quiere una SUV seria, familiar y con muy buena imagen.",
-        hook: "Una ficha premium ayuda mucho a vender confianza antes de la visita."
+        hook: "Muy buena si buscás una SUV familiar con comodidad, imagen y un nombre fuerte detrás."
       },
       {
         id: "nivus-highline",
@@ -224,10 +224,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Diseno actual, equipamiento alto y una presencia que se luce mucho en una vidriera digital bien armada.",
         descriptionLong:
-          "La Nivus Highline tiene un perfil moderno y aspiracional. Es una unidad que genera consulta por imagen, tecnologia y sensacion de auto bien presentado.",
+          "La Nivus Highline tiene un perfil moderno y aspiracional. Es una unidad que genera consulta por imagen, tecnologia y una sensación de auto bien equipado desde el primer vistazo.",
         features: ["Tablero digital", "Cargador inalambrico", "Sensores 360", "Techo bitono"],
         salesPitch: "Una opcion que entra muy bien cuando el cliente quiere algo canchero y bien equipado.",
-        hook: "Perfecta para mostrar un stock con criterio visual y perfil aspiracional."
+        hook: "Ideal si querés algo moderno, canchero y cómodo para todos los días."
       },
       {
         id: "hilux-srx",
@@ -245,10 +245,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Una pickup de perfil alto que combina presencia, confort y el respaldo de un nombre muy fuerte.",
         descriptionLong:
-          "La Hilux SRX 4x4 es una de esas unidades que posicionan a la concesionaria. Tiene peso propio, imagen de gama alta y un nivel de equipamiento que se vende muy bien en ficha.",
+          "La Hilux SRX 4x4 es una de esas unidades que se hacen mirar por presencia, confort y equipamiento. Funciona muy bien si querés una pickup completa y con mucha personalidad.",
         features: ["4x4", "Asientos de cuero", "Camara 360", "Arranque por boton"],
         salesPitch: "Si el cliente busca algo importante, esta es una de esas unidades que hacen detener la mirada.",
-        hook: "Aporta una imagen mas solida y premium al line-up principal."
+        hook: "Una opción fuerte si buscás una pickup importante para trabajar y disfrutar."
       }
     ]
   },
@@ -264,7 +264,7 @@ window.DEALERSHIP_DATA = {
     heroLead:
       "Montreal gana fuerza cuando abre con unidades destacadas, valor de referencia y un camino rapido para pasar de la mirada a la consulta.",
     eyebrow: "Multimarca en La Rioja",
-    tagline: "0 km y usados con imagen premium, financiacion y acompanamiento.",
+    tagline: "0 km y usados para elegir mejor, comparar tranquilo y avanzar sin vueltas.",
     accent: "#139fe4",
     brandSecondary: "#0b1d4d",
     brandContrast: "#ffffff",
@@ -276,12 +276,12 @@ window.DEALERSHIP_DATA = {
     address: "Av. San Francisco 2200, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Av.+San+Francisco+2200+La+Rioja",
     hours: "Lunes a viernes de 09:00 a 13:00 y de 18:00 a 22:00. Sabados de 09:00 a 13:00.",
-    promise: "Variedad, respuesta y una presentacion pensada para que la consulta llegue mas facil.",
-    supportMessage: "Mostramos lo mejor del stock, explicamos las opciones y seguimos la charla sin hacerte perder tiempo.",
+    promise: "Te mostramos las opciones con claridad para que puedas comparar, consultar y avanzar más fácil.",
+    supportMessage: "Elegís el tipo de vehículo, mirás las unidades y seguís la charla cuando encontrás una que te cierre.",
     stats: [
-      { value: "Multimarca", label: "Opciones para distintos gustos y valores" },
-      { value: "Financiacion", label: "Espacio claro para explicar como avanzar" },
-      { value: "Gestion completa", label: "Acompanamiento para que todo sea mas simple" }
+      { value: "Multimarca", label: "Opciones para distintos gustos, usos y presupuestos" },
+      { value: "Financiacion", label: "Un canal simple para consultar cuotas y formas de pago" },
+      { value: "Gestion completa", label: "Acompanamiento para que comprar sea mas simple" }
     ],
     highlights: [
       "Presencia comercial en Av. San Francisco 2200 con showroom visible y horario amplio.",
@@ -290,16 +290,16 @@ window.DEALERSHIP_DATA = {
     ],
     services: [
       "Te mostramos opciones multimarca segun lo que quieras gastar y el uso que le vas a dar.",
-      "Explicamos financiacion y pasos de compra en un lenguaje simple y directo.",
-      "Fichas bien presentadas para que el cliente llegue mas decidido a la conversacion."
+      "Si necesitás financiación, te contamos cómo seguir en un lenguaje simple y directo.",
+      "También podés consultar por usado en parte de pago, más fotos o coordinar visita."
     ],
     testimonials: [
       {
-        quote: "En una multimarca, la velocidad de respuesta y la presentacion hacen mucha diferencia.",
+        quote: "Poder comparar rápido varias opciones ayuda mucho cuando todavía no tenés decidido el modelo.",
         author: "Mensaje de venta sugerido"
       },
       {
-        quote: "Cuando la financiacion se entiende facil, el cliente se anima mas a consultar.",
+        quote: "Cuando la financiación se entiende fácil, la consulta avanza con mucha menos fricción.",
         author: "Experiencia comercial"
       }
     ],
@@ -329,10 +329,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Una SUV joven, equipada y con muy buena presencia para quien quiere algo actual y practico.",
         descriptionLong:
-          "La Tracker LTZ tiene muy buena recepcion por imagen, tecnologia y uso diario. Es una unidad que se deja vender bien tanto por familia como por gusto personal.",
+          "La Tracker LTZ tiene muy buena recepcion por imagen, tecnologia y uso diario. Es una unidad que suele cerrar muy bien si buscás una SUV moderna para familia o para darte un gusto.",
         features: ["Motor turbo", "Pantalla tactil", "Wi-Fi nativo", "Sensores delanteros"],
         salesPitch: "Muy buena para quien busca una SUV moderna, comoda y facil de disfrutar.",
-        hook: "Muy fuerte para consultas digitales por su look y equipamiento."
+        hook: "Una muy buena opción si querés una SUV actual, cómoda y fácil de disfrutar."
       },
       {
         id: "ranger-xlt",
@@ -350,10 +350,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Una pickup fuerte para trabajo, ruta y uso personal, con una imagen que siempre llama la atencion.",
         descriptionLong:
-          "La Ranger XLT resuelve muy bien cuando el cliente quiere potencia, imagen y comodidad. Es una de esas pickups que ayudan a mostrar amplitud y jerarquia dentro del stock.",
+          "La Ranger XLT resuelve muy bien cuando querés potencia, imagen y comodidad. Es una pickup que se adapta muy bien al trabajo, la ruta y el uso personal.",
         features: ["Caja automatica", "Pantalla vertical", "Control de traccion", "Ganchos de carga"],
         salesPitch: "Excelente opcion para quien quiere una pickup completa y con mucha presencia.",
-        hook: "Ayuda a mostrar amplitud de oferta y perfil comercial serio."
+        hook: "Muy buena si buscás una pickup completa y con mucha presencia."
       },
       {
         id: "onix-rs",
@@ -371,10 +371,10 @@ window.DEALERSHIP_DATA = {
         description:
           "Un hatch con look deportivo, valor de entrada atractivo y muy buena llegada en consultas digitales.",
         descriptionLong:
-          "El Onix RS funciona muy bien para captar interesados por precio, estilo y practicidad. Es un auto que entra facil en campanas y llamados de primer contacto.",
+          "El Onix RS funciona muy bien si buscás un auto ágil, con look deportivo y un valor de entrada atractivo. Tiene ese equilibrio entre estilo y practicidad que suele convencer rápido.",
         features: ["Pantalla 8 pulgadas", "6 airbags", "CarPlay", "Estilo deportivo"],
         salesPitch: "Si queres un auto canchero, rendidor y de entrada amigable, es una gran carta de presentacion.",
-        hook: "Perfecto para primer contacto y consultas rapidas por WhatsApp."
+        hook: "Ideal si querés un auto canchero para todos los días y fácil de mantener."
       }
     ]
   }
