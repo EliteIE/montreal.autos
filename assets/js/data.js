@@ -7,80 +7,99 @@ window.DEALERSHIP_DATA = {
     wordmarkSecondary: "Vehiculos y motos",
     logo: "assets/brands/autos-sv-logo.png",
     logoAlt: "Logo Autos SV",
-    heroTitle: "Tu proximo vehiculo arranca con una propuesta posible.",
+    heroTitle: "Encontra tu proximo vehiculo con una atencion clara y directa.",
     heroLead:
-      "Autos, usados seleccionados y una atencion comercial pensada para quienes necesitan avanzar sin vueltas. Un sitio claro para mirar opciones, consultar y seguir la conversacion por WhatsApp.",
+      "En Autos SV te mostramos opciones reales, te respondemos rapido y te acompanamos para que elijas tranquilo, sin vueltas y con atencion personalizada.",
     eyebrow: "La Rioja Capital",
-    tagline: "Acceso agil a autos y motos con acompanamiento comercial cercano.",
-    accent: "#f2ef1d",
-    brandSecondary: "#e11619",
-    brandContrast: "#111111",
-    accentSoft: "#fff9a8",
+    tagline: "Autos y motos con respuesta rapida y atencion cercana.",
+    accent: "#db1f26",
+    brandSecondary: "#171717",
+    brandContrast: "#ffffff",
+    accentSoft: "#f7d9db",
     accentDark: "#111111",
-    surface: "#fffef0",
-    basePath: "./",
+    surface: "#fbfbfb",
     phone: "+54 3804 78-3030",
     whatsapp: "543804783030",
     address: "Adolfo E. Davila 247, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Adolfo+E.+Davila+247+La+Rioja",
     hours: "Atencion comercial personalizada en La Rioja Capital.",
-    promise: "Opciones concretas, trato directo y una experiencia digital mas clara para consultar desde el primer clic.",
+    promise: "Te escuchamos, te mostramos opciones concretas y te ayudamos a avanzar cuando aparezca el vehiculo indicado.",
+    supportMessage: "Atencion rapida, contacto directo y opciones pensadas para que no pierdas tiempo.",
     stats: [
-      { value: "0 km + usados", label: "Vidriera pensada para diferentes presupuestos" },
-      { value: "Motos y autos", label: "Oferta con perfil popular y urbano" },
-      { value: "Consulta rapida", label: "CTA visibles para responder sin demoras" }
+      { value: "Autos y motos", label: "Opciones para distintos presupuestos y necesidades" },
+      { value: "Respuesta agil", label: "Consultas por WhatsApp para seguir la charla enseguida" },
+      { value: "Atencion cercana", label: "Trato claro desde la primera consulta" }
     ],
     highlights: [
-      "Oficina comercial identificada en Adolfo E. Davila 247, con foco local.",
-      "Presencia publica vinculada a programas de acceso en cuotas y creditos acumulables.",
-      "Reconocimiento local en 2024 como empresa destacada."
+      "Presencia comercial en Adolfo E. Davila 247, con foco fuerte en el publico local.",
+      "Marca asociada publicamente a propuestas accesibles y planes de avance por cuotas.",
+      "Reconocimiento local reciente que ayuda a reforzar confianza y recordacion."
     ],
     services: [
-      "Asesoramiento para elegir entre usado, 0 km o una opcion de entrada mas accesible.",
-      "Seguimiento comercial por WhatsApp para consultas, reserva y primera evaluacion.",
-      "Espacio preparado para sumar planes, promos y oportunidades semanales."
+      "Te ayudamos a comparar opciones segun presupuesto, uso diario o necesidad de trabajo.",
+      "Seguimiento por WhatsApp para responder rapido y avanzar con la consulta.",
+      "Espacio ideal para publicar oportunidades semanales, ingresos recientes y promos."
     ],
     testimonials: [
       {
-        quote: "Lo que mas valoramos fue tener una respuesta rapida y sentir que habia opciones reales para nuestro presupuesto.",
-        author: "Consulta comercial recurrente"
+        quote: "Aca la clave es responder rapido y mostrar opciones que realmente le sirvan al cliente.",
+        author: "Mensaje de venta sugerido"
       },
       {
-        quote: "La experiencia ideal aca no es solo mostrar autos: es transmitir que hay una propuesta posible para cada caso.",
-        author: "Enfoque del prototipo"
+        quote: "Cuando la consulta entra facil, la conversacion avanza mucho mejor.",
+        author: "Experiencia comercial"
       }
     ],
+    chat: {
+      welcome:
+        "Hola, soy el asesor virtual de Autos SV. Si me contas que estas buscando, te guio rapido con una opcion para ciudad, trabajo o primer auto.",
+      suggestions: [
+        "Busco un auto para todos los dias",
+        "Quiero ver una pickup",
+        "Quiero hablar con ventas"
+      ]
+    },
     inventory: [
       {
         id: "208-allure",
         name: "Peugeot 208 Allure",
         year: "2023",
         price: "USD 18.900",
-        badge: "Elegido para ciudad",
+        priceNote: "Valor de referencia",
+        badge: "Ideal para ciudad",
         segment: "Hatchback",
         km: "28.000 km",
         transmission: "Manual",
         fuel: "Nafta",
         color: "Naranja Solar",
+        images: [],
         description:
-          "Compacto, moderno y muy buscado para quienes quieren dar un salto de calidad sin irse a un segmento mayor.",
+          "Un hatch moderno, comodo y con muy buena presencia para quien quiere subir de nivel y moverse todos los dias con estilo.",
+        descriptionLong:
+          "El 208 Allure es una opcion muy buscada por imagen, confort y practicidad. Funciona muy bien para quien quiere un auto agil para ciudad sin resignar equipamiento ni presencia.",
         features: ["Pantalla multimedia", "Camara trasera", "Control crucero", "Llantas 16"],
-        hook: "Ideal para primer cambio de auto o para uso urbano con estilo."
+        salesPitch: "Si estas buscando un auto lindo, rendidor y facil de disfrutar todos los dias, esta es una gran alternativa.",
+        hook: "Perfecto para primer cambio de auto o para renovar con algo mas moderno."
       },
       {
         id: "hilux-dx",
         name: "Toyota Hilux DX 4x2",
         year: "2022",
         price: "USD 31.500",
-        badge: "Trabajo y confianza",
+        priceNote: "Valor de referencia",
+        badge: "Lista para trabajar",
         segment: "Pickup",
         km: "41.000 km",
         transmission: "Manual",
         fuel: "Diesel",
         color: "Gris Basalto",
+        images: [],
         description:
-          "Una pick-up que transmite robustez y respuesta. Buena opcion para clientes que trabajan y tambien quieren moverse comodos.",
+          "Una pickup noble, rendidora y muy confiable para quien necesita trabajo y tambien comodidad para moverse.",
+        descriptionLong:
+          "La Hilux sigue siendo una de las opciones mas pedidas cuando se busca resistencia, reventa y una respuesta conocida. Esta unidad acompana muy bien tanto para uso laboral como mixto.",
         features: ["Cabina doble", "Aire acondicionado", "Bluetooth", "Caja de carga protegida"],
+        salesPitch: "Una opcion fuerte para quien busca una herramienta de trabajo que tambien se luzca fuera del horario laboral.",
         hook: "Pensada para quienes necesitan rendimiento sin resignar practicidad."
       },
       {
@@ -88,27 +107,23 @@ window.DEALERSHIP_DATA = {
         name: "Fiat Cronos Drive",
         year: "2024",
         price: "USD 22.400",
+        priceNote: "Valor de referencia",
         badge: "Entrega inmediata",
         segment: "Sedan",
         km: "0 km",
         transmission: "Manual",
         fuel: "Nafta",
         color: "Blanco Alaska",
+        images: [],
         description:
-          "Modelo con mucha salida en Argentina por espacio, consumo equilibrado y mantenimiento amigable.",
+          "Espacioso, practico y con muy buena salida. Un sedan que gusta mucho por comodidad y uso familiar.",
+        descriptionLong:
+          "El Cronos sigue siendo un nombre fuerte en Argentina por espacio, baul, mantenimiento amigable y una mecanica conocida. Es un auto muy vendedor para uso diario o familiar.",
         features: ["Pantalla de 7 pulgadas", "Sensores traseros", "Control de estabilidad", "Amplio baul"],
-        hook: "Una propuesta muy fuerte para familias o para uso diario intensivo."
+        salesPitch: "Si queres un 0 km que sirva para todo, con espacio y buena presencia, este entra muy bien en la charla.",
+        hook: "Una propuesta fuerte para familias o para uso diario intensivo."
       }
-    ],
-    chat: {
-      welcome:
-        "Hola, soy el asistente virtual de Autos SV. Te puedo orientar con usados, 0 km, formas de contacto y el vehiculo que mejor encaja con tu necesidad.",
-      suggestions: [
-        "Quiero un auto para ciudad",
-        "Busco una pickup",
-        "Como me contacto por WhatsApp"
-      ]
-    }
+    ]
   },
   "matesich-autos": {
     slug: "matesich-autos",
@@ -118,108 +133,124 @@ window.DEALERSHIP_DATA = {
     wordmarkSecondary: "AUTOS",
     logo: "assets/brands/matesich-logo.jpg",
     logoAlt: "Logo Matesich Autos",
-    heroTitle: "Trayectoria, criterio y una experiencia digital a la altura de la marca.",
+    heroTitle: "Trayectoria, confianza y una seleccion pensada para elegir bien.",
     heroLead:
-      "Un sitio pensado para una concesionaria con historia en La Rioja: mas orden visual, mejor lectura del stock y una imagen que acompana la confianza construida durante anos.",
+      "Matesich Autos puede mostrar su experiencia tambien en digital: stock ordenado, fichas claras y una presentacion a la altura de la marca.",
     eyebrow: "Mas de 25 anos en el rubro",
-    tagline: "Seminuevos, 0 km y asesoria personalizada con enfoque familiar.",
-    accent: "#d90700",
-    brandSecondary: "#141414",
+    tagline: "Seminuevos y 0 km con una imagen solida y atencion personalizada.",
+    accent: "#ef232c",
+    brandSecondary: "#1c1c1c",
     brandContrast: "#ffffff",
-    accentSoft: "#ffd9d6",
-    accentDark: "#1b0b0a",
-    surface: "#faf7f6",
+    accentSoft: "#fde0e3",
+    accentDark: "#1a1011",
+    surface: "#fff7f8",
     phone: "+54 380 467-1701",
     whatsapp: "543804671701",
     email: "matesichautos@gmail.com",
     address: "Av. Ortiz de Ocampo 2840, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Ortiz+de+Ocampo+2840+La+Rioja",
     hours: "Lunes a viernes de 08:30 a 13:00 y de 17:30 a 21:00. Sabados de 09:00 a 13:00.",
-    promise: "Una pagina que ordena la trayectoria de la marca y la convierte en consultas reales.",
+    promise: "Una trayectoria asi merece una web que transmita orden, confianza y ganas de consultar.",
+    supportMessage: "Mostramos el vehiculo, resolvemos dudas y dejamos la puerta abierta para seguir la conversacion.",
     stats: [
-      { value: "+25 anos", label: "Historia en el mercado local" },
-      { value: "Usados + 0 km", label: "Portfolio para distintos perfiles" },
-      { value: "Asesoria cercana", label: "Imagen premium pero humana" }
+      { value: "+25 anos", label: "Experiencia que suma respaldo en cada operacion" },
+      { value: "Usados y 0 km", label: "Variedad para distintos perfiles de cliente" },
+      { value: "Atencion personal", label: "Trato cercano con imagen profesional" }
     ],
     highlights: [
-      "Autocosmos registra la concesionaria en Av. Ortiz de Ocampo 2840 con horario comercial extendido.",
-      "Cobertura periodistica local la presenta como una firma con mas de 25 anos de trayectoria familiar.",
-      "Su dominio actual aparece vencido, lo que abre una oportunidad clara de rediseño y recuperacion digital."
+      "Concesionaria identificada en Av. Ortiz de Ocampo 2840 con horarios amplios de atencion.",
+      "Firma vinculada publicamente a una historia familiar de mas de dos decadas en el rubro.",
+      "Una presencia digital renovada puede poner esa trayectoria mucho mas en valor."
     ],
     services: [
-      "Recepcion de consultas para usados seleccionados y oportunidades de entrega inmediata.",
+      "Consultas ordenadas para usados seleccionados y unidades con perfil premium.",
       "Canal directo para reserva, toma de usados y seguimiento comercial personalizado.",
-      "Base lista para sumar financiacion, tasacion online y stock filtrable en una segunda etapa."
+      "Base lista para sumar tasacion online, financiacion y stock filtrable cuando la marca quiera crecer."
     ],
     testimonials: [
       {
-        quote: "Cuando una marca ya tiene reputacion, el sitio tiene que transmitir orden, solvencia y criterio desde la primera pantalla.",
-        author: "Enfoque del prototipo"
+        quote: "La confianza tambien se vende con una buena presentacion, no solo con el nombre.",
+        author: "Mensaje de venta sugerido"
       },
       {
-        quote: "La trayectoria se vuelve mas visible cuando el cliente puede navegar el stock y consultar sin friccion.",
-        author: "Propuesta digital"
+        quote: "Cuando el cliente ve orden y criterio, consulta con otra seguridad.",
+        author: "Experiencia comercial"
       }
     ],
+    chat: {
+      welcome:
+        "Hola, soy el asesor virtual de Matesich Autos. Si queres, te ayudo a encontrar una SUV, una pickup o una opcion para cambiar tu usado.",
+      suggestions: [
+        "Quiero una SUV familiar",
+        "Tengo un usado para entregar",
+        "Quiero coordinar una visita"
+      ]
+    },
     inventory: [
       {
         id: "corolla-cross-xei",
         name: "Toyota Corolla Cross XEI",
         year: "2023",
         price: "USD 33.800",
-        badge: "Favorito familiar",
+        priceNote: "Valor de referencia",
+        badge: "Favorita para familia",
         segment: "SUV",
         km: "19.000 km",
         transmission: "Automatica",
         fuel: "Nafta",
         color: "Azul Noche",
+        images: [],
         description:
-          "SUV moderna, con postura alta y excelente percepcion de calidad. Muy alineada con una propuesta de concesionaria consolidada.",
+          "Una SUV moderna, comoda y con una presencia muy fuerte para quien quiere dar un salto de categoria.",
+        descriptionLong:
+          "La Corolla Cross combina postura alta, buena calidad percibida y un nombre muy fuerte en el mercado. Es de esas unidades que transmiten confianza incluso antes de verla en persona.",
         features: ["Caja CVT", "Climatizador", "Toyota Safety Sense", "Pantalla 9 pulgadas"],
-        hook: "Una ficha premium que ayuda a vender confianza antes de la visita."
+        salesPitch: "Ideal para quien quiere una SUV seria, familiar y con muy buena imagen.",
+        hook: "Una ficha premium ayuda mucho a vender confianza antes de la visita."
       },
       {
         id: "nivus-highline",
         name: "Volkswagen Nivus Highline",
         year: "2022",
         price: "USD 28.600",
-        badge: "Imagen contemporanea",
+        priceNote: "Valor de referencia",
+        badge: "Muy buscada",
         segment: "Crossover",
         km: "26.000 km",
         transmission: "Automatica",
         fuel: "Nafta",
         color: "Gris Platino",
+        images: [],
         description:
-          "Diseño actual, equipamiento alto y una presencia ideal para destacar en una vidriera digital bien curada.",
+          "Diseno actual, equipamiento alto y una presencia que se luce mucho en una vidriera digital bien armada.",
+        descriptionLong:
+          "La Nivus Highline tiene un perfil moderno y aspiracional. Es una unidad que genera consulta por imagen, tecnologia y sensacion de auto bien presentado.",
         features: ["Tablero digital", "Cargador inalambrico", "Sensores 360", "Techo bitono"],
-        hook: "Perfecto para mostrar un stock con criterio visual y perfil aspiracional."
+        salesPitch: "Una opcion que entra muy bien cuando el cliente quiere algo canchero y bien equipado.",
+        hook: "Perfecta para mostrar un stock con criterio visual y perfil aspiracional."
       },
       {
         id: "hilux-srx",
         name: "Toyota Hilux SRX 4x4",
         year: "2021",
         price: "USD 39.900",
+        priceNote: "Valor de referencia",
         badge: "Alta gama",
         segment: "Pickup",
         km: "54.000 km",
         transmission: "Automatica",
         fuel: "Diesel",
         color: "Negro Eclipse",
+        images: [],
         description:
-          "Una unidad de perfil alto que suma valor de marca y comunica respaldo desde la primera impresion.",
+          "Una pickup de perfil alto que combina presencia, confort y el respaldo de un nombre muy fuerte.",
+        descriptionLong:
+          "La Hilux SRX 4x4 es una de esas unidades que posicionan a la concesionaria. Tiene peso propio, imagen de gama alta y un nivel de equipamiento que se vende muy bien en ficha.",
         features: ["4x4", "Asientos de cuero", "Camara 360", "Arranque por boton"],
-        hook: "Aporta una imagen mas solida y premium para el line-up principal."
+        salesPitch: "Si el cliente busca algo importante, esta es una de esas unidades que hacen detener la mirada.",
+        hook: "Aporta una imagen mas solida y premium al line-up principal."
       }
-    ],
-    chat: {
-      welcome:
-        "Hola, soy el asistente virtual de Matesich Autos. Te ayudo a ubicar una opcion segun tu presupuesto, estilo de uso o si queres tomar tu usado como parte de pago.",
-      suggestions: [
-        "Busco una SUV familiar",
-        "Toman usados",
-        "Quiero coordinar una visita"
-      ]
-    }
+    ]
   },
   "montreal-autos": {
     slug: "montreal-autos",
@@ -229,63 +260,78 @@ window.DEALERSHIP_DATA = {
     wordmarkSecondary: "AUTOS",
     logo: "assets/brands/montreal-logo.png",
     logoAlt: "Logo Montreal Autos",
-    heroTitle: "Multimarca agil para elegir bien y resolver rapido.",
+    heroTitle: "Multimarca, buena atencion y opciones para avanzar rapido.",
     heroLead:
-      "Un sitio claro para una concesionaria que vive de la velocidad comercial: stock visible, fichas concretas, financiacion explicada y contacto directo en pocos pasos.",
+      "Montreal Autos puede mostrar mejor todo lo que ya hace bien: variedad, financiacion y acompanamiento para que la operacion sea simple desde el primer contacto.",
     eyebrow: "Multimarca en La Rioja",
-    tagline: "0 km y usados con financiacion propia, bancaria y gestion documental.",
-    accent: "#3057ff",
-    brandSecondary: "#10162c",
+    tagline: "0 km y usados con imagen premium, financiacion y acompanamiento.",
+    accent: "#139fe4",
+    brandSecondary: "#0b1d4d",
     brandContrast: "#ffffff",
-    accentSoft: "#dce5ff",
-    accentDark: "#0f1426",
-    surface: "#f4f8ff",
+    accentSoft: "#d9f0fb",
+    accentDark: "#0d1737",
+    surface: "#f5f9fe",
     phone: "+54 380 466-3773",
     whatsapp: "543804663773",
     address: "Av. San Francisco 2200, La Rioja",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Av.+San+Francisco+2200+La+Rioja",
     hours: "Lunes a viernes de 09:00 a 13:00 y de 18:00 a 22:00. Sabados de 09:00 a 13:00.",
-    promise: "Mas claridad comercial para convertir consultas en visitas y operaciones.",
+    promise: "Variedad, respuesta y una presentacion pensada para que la consulta llegue mas facil.",
+    supportMessage: "Mostramos lo mejor del stock, explicamos las opciones y seguimos la charla sin hacerte perder tiempo.",
     stats: [
-      { value: "Multimarca", label: "Oferta variada para varios bolsillos" },
-      { value: "Financiacion", label: "Espacio para explicar opciones reales" },
-      { value: "Gestion completa", label: "Papeles y acompanamiento visibles" }
+      { value: "Multimarca", label: "Opciones para distintos gustos y valores" },
+      { value: "Financiacion", label: "Espacio claro para explicar como avanzar" },
+      { value: "Gestion completa", label: "Acompanamiento para que todo sea mas simple" }
     ],
     highlights: [
-      "ZonaAuto publica direccion, horarios y contacto de Montreal Autos en Av. San Francisco 2200.",
-      "Cobertura periodistica local destaca financiacion propia y bancaria segun el perfil del cliente.",
-      "Tambien aparece mencionada la gestion integral de papeles para que la compra sea mas simple."
+      "Presencia comercial en Av. San Francisco 2200 con showroom visible y horario amplio.",
+      "Menciones publicas sobre financiacion propia y bancaria segun perfil del cliente.",
+      "Acompanamiento con papeles y gestion como parte del valor comercial de la marca."
     ],
     services: [
-      "Acompanamiento desde la primera consulta hasta la entrega con explicacion de cada paso.",
-      "Espacio preparado para destacar financiacion propia, bancaria y promociones por temporada.",
-      "Fichas de vehiculo pensadas para reducir dudas antes del primer mensaje."
+      "Te mostramos opciones multimarca segun lo que quieras gastar y el uso que le vas a dar.",
+      "Explicamos financiacion y pasos de compra en un lenguaje simple y directo.",
+      "Fichas bien presentadas para que el cliente llegue mas decidido a la conversacion."
     ],
     testimonials: [
       {
-        quote: "En un negocio multimarca, la velocidad importa. Este sitio ordena la oferta para que el cliente encuentre algo atractivo enseguida.",
-        author: "Enfoque del prototipo"
+        quote: "En una multimarca, la velocidad de respuesta y la presentacion hacen mucha diferencia.",
+        author: "Mensaje de venta sugerido"
       },
       {
-        quote: "La financiacion y la gestion de papeles suman mucho valor cuando se explican con simpleza.",
-        author: "Propuesta digital"
+        quote: "Cuando la financiacion se entiende facil, el cliente se anima mas a consultar.",
+        author: "Experiencia comercial"
       }
     ],
+    chat: {
+      welcome:
+        "Hola, soy el asesor virtual de Montreal Autos. Si me decis que tipo de vehiculo queres o como pensas comprarlo, te oriento rapido.",
+      suggestions: [
+        "Quiero ver opciones con financiacion",
+        "Busco una SUV",
+        "Necesito ayuda para arrancar"
+      ]
+    },
     inventory: [
       {
         id: "tracker-ltz",
         name: "Chevrolet Tracker LTZ",
         year: "2024",
         price: "USD 29.700",
+        priceNote: "Valor de referencia",
         badge: "SUV versatil",
         segment: "SUV",
         km: "7.000 km",
         transmission: "Automatica",
         fuel: "Nafta turbo",
         color: "Rojo Carmesi",
+        images: [],
         description:
-          "Una SUV joven y versatil, ideal para destacar el costado mas dinamico del stock multimarca.",
+          "Una SUV joven, equipada y con muy buena presencia para quien quiere algo actual y practico.",
+        descriptionLong:
+          "La Tracker LTZ tiene muy buena recepcion por imagen, tecnologia y uso diario. Es una unidad que se deja vender bien tanto por familia como por gusto personal.",
         features: ["Motor turbo", "Pantalla tactil", "Wi-Fi nativo", "Sensores delanteros"],
+        salesPitch: "Muy buena para quien busca una SUV moderna, comoda y facil de disfrutar.",
         hook: "Muy fuerte para consultas digitales por su look y equipamiento."
       },
       {
@@ -293,15 +339,20 @@ window.DEALERSHIP_DATA = {
         name: "Ford Ranger XLT",
         year: "2022",
         price: "USD 36.500",
-        badge: "Potencia util",
+        priceNote: "Valor de referencia",
+        badge: "Potencia y presencia",
         segment: "Pickup",
         km: "33.500 km",
         transmission: "Automatica",
         fuel: "Diesel",
         color: "Plata Lunar",
+        images: [],
         description:
-          "Una pick-up de gran salida para quienes buscan trabajo, ruta y una presencia firme en el garage.",
+          "Una pickup fuerte para trabajo, ruta y uso personal, con una imagen que siempre llama la atencion.",
+        descriptionLong:
+          "La Ranger XLT resuelve muy bien cuando el cliente quiere potencia, imagen y comodidad. Es una de esas pickups que ayudan a mostrar amplitud y jerarquia dentro del stock.",
         features: ["Caja automatica", "Pantalla vertical", "Control de traccion", "Ganchos de carga"],
+        salesPitch: "Excelente opcion para quien quiere una pickup completa y con mucha presencia.",
         hook: "Ayuda a mostrar amplitud de oferta y perfil comercial serio."
       },
       {
@@ -309,26 +360,22 @@ window.DEALERSHIP_DATA = {
         name: "Chevrolet Onix RS",
         year: "2023",
         price: "USD 20.300",
-        badge: "Consulta rapida",
+        priceNote: "Valor de referencia",
+        badge: "Muy consultado",
         segment: "Hatchback",
         km: "18.200 km",
         transmission: "Manual",
         fuel: "Nafta",
         color: "Blanco Polar",
+        images: [],
         description:
-          "Vehiculo ideal para captar leads por precio de entrada, imagen joven y mantenimiento accesible.",
+          "Un hatch con look deportivo, valor de entrada atractivo y muy buena llegada en consultas digitales.",
+        descriptionLong:
+          "El Onix RS funciona muy bien para captar interesados por precio, estilo y practicidad. Es un auto que entra facil en campanas y llamados de primer contacto.",
         features: ["Pantalla 8 pulgadas", "6 airbags", "CarPlay", "Estilo deportivo"],
-        hook: "Perfecto para campañas de WhatsApp y primer contacto digital."
+        salesPitch: "Si queres un auto canchero, rendidor y de entrada amigable, es una gran carta de presentacion.",
+        hook: "Perfecto para primer contacto y consultas rapidas por WhatsApp."
       }
-    ],
-    chat: {
-      welcome:
-        "Hola, soy el asistente virtual de Montreal Autos. Puedo ayudarte con stock, financiacion, ubicacion y el vehiculo que mas se ajuste a lo que estas buscando.",
-      suggestions: [
-        "Que opciones tienen con financiacion",
-        "Busco una SUV",
-        "Necesito ayuda con los papeles"
-      ]
-    }
+    ]
   }
 };

@@ -1,18 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --brand: #ff7a18;
-  --brand-secondary: #111111;
+  --brand: #db1f26;
+  --brand-secondary: #171717;
   --brand-contrast: #ffffff;
-  --brand-soft: #ffd4a9;
-  --brand-dark: #25140a;
-  --surface: #fff7f0;
-  --text: #111111;
-  --muted: #5c5c5c;
-  --line: rgba(17, 17, 17, 0.1);
-  --panel: rgba(255, 255, 255, 0.85);
-  --shadow: 0 20px 70px rgba(17, 17, 17, 0.1);
-  --radius: 28px;
+  --brand-soft: #f7d9db;
+  --brand-dark: #111111;
+  --surface: #fbfbfb;
+  --surface-strong: #ffffff;
+  --text: #121212;
+  --muted: #5e5e5e;
+  --line: rgba(18, 18, 18, 0.1);
+  --line-strong: rgba(18, 18, 18, 0.16);
+  --shadow: 0 24px 70px rgba(18, 18, 18, 0.09);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
 }
 
 * {
@@ -29,8 +33,28 @@ body {
   font-family: "Sora", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--brand) 18%, transparent), transparent 28%),
-    linear-gradient(180deg, var(--surface) 0%, #ffffff 45%, var(--surface) 100%);
+    radial-gradient(circle at top left, color-mix(in srgb, var(--brand) 12%, transparent), transparent 24%),
+    linear-gradient(180deg, var(--surface) 0%, #ffffff 52%, var(--surface) 100%);
+}
+
+body[data-dealer="autos-sv"] {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(219, 31, 38, 0.12), transparent 18%),
+    radial-gradient(circle at 88% 14%, rgba(23, 23, 23, 0.06), transparent 18%),
+    linear-gradient(180deg, #fafafa 0%, #ffffff 48%, #f7f7f7 100%);
+}
+
+body[data-dealer="matesich-autos"] {
+  background:
+    radial-gradient(circle at 82% 10%, rgba(239, 35, 44, 0.12), transparent 18%),
+    linear-gradient(180deg, #fff7f8 0%, #ffffff 52%, #fff7f8 100%);
+}
+
+body[data-dealer="montreal-autos"] {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(19, 159, 228, 0.16), transparent 20%),
+    radial-gradient(circle at 16% 10%, rgba(11, 29, 77, 0.08), transparent 16%),
+    linear-gradient(180deg, #f5f9fe 0%, #ffffff 54%, #f5f9fe 100%);
 }
 
 a {
@@ -43,9 +67,14 @@ input {
   font: inherit;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 .hub-shell,
 .site-shell {
-  width: min(1200px, calc(100% - 32px));
+  width: min(1220px, calc(100% - 36px));
   margin: 0 auto;
 }
 
@@ -53,29 +82,36 @@ input {
   padding: 40px 0 60px;
 }
 
-.hub-hero {
-  max-width: 840px;
-  padding: 24px 0 18px;
-}
-
 .eyebrow,
 .micro-copy {
   margin: 0;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
   color: var(--brand);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hub-hero {
+  max-width: 820px;
 }
 
 .hub-hero h1,
 .hero-copy h1,
-.vehicle-hero__copy h1 {
-  margin: 12px 0 16px;
+.vehicle-summary h1 {
+  margin: 12px 0 18px;
   font-family: "Instrument Serif", serif;
-  font-size: clamp(3rem, 6vw, 5.7rem);
-  line-height: 0.95;
   font-weight: 400;
-  letter-spacing: -0.04em;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hub-hero h1,
+.hero-copy h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+}
+
+.vehicle-summary h1 {
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
 }
 
 .hub-copy,
@@ -85,25 +121,31 @@ input {
 .service-card p,
 .quote-card p,
 .detail-card p,
-.contact-band p {
+.contact-band p,
+.vehicle-summary p,
+.vehicle-gallery__hint p,
+.related-card p {
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .hub-grid,
+.hub-features,
 .inventory-grid,
 .service-grid,
-.hub-features,
 .testimonial-section,
-.detail-grid,
-.stats-row {
+.stats-row,
+.trust-strip,
+.vehicle-detail-grid,
+.vehicle-info-grid,
+.related-grid {
   display: grid;
   gap: 18px;
 }
 
 .hub-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
 .hub-card,
@@ -111,21 +153,22 @@ input {
 .inventory-card,
 .service-card,
 .quote-card,
-.detail-card,
 .stat-card,
-.hero-stage__panel,
 .contact-band,
 .chat-widget,
-.vehicle-stage-large {
+.vehicle-gallery,
+.vehicle-summary,
+.detail-card,
+.related-card {
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel);
-  backdrop-filter: blur(12px);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.88);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
 }
 
 .hub-card {
-  padding: 26px;
+  padding: 28px;
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--card-brand) 9%, white), white),
     var(--card-surface);
@@ -134,47 +177,46 @@ input {
 .hub-card__brand {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 88px;
-  margin-bottom: 10px;
+  min-height: 90px;
+  margin-bottom: 8px;
 }
 
 .hub-card__logo {
-  max-width: 210px;
-  max-height: 74px;
+  max-width: 220px;
+  max-height: 78px;
   object-fit: contain;
   object-position: left center;
-  filter: drop-shadow(0 10px 24px rgba(17, 17, 17, 0.12));
 }
 
 .hub-card h2,
 .section-heading h2,
 .service-card h3,
-.quote-card strong,
 .detail-card h2,
-.inventory-card h3,
-.contact-band h2 {
+.related-card h3 {
   margin: 0 0 12px;
 }
 
 .hub-card__list,
 .spec-list,
-.detail-list {
+.detail-list,
+.vehicle-summary__list {
   margin: 18px 0 22px;
   padding: 0;
   list-style: none;
 }
 
 .hub-card__list li,
+.spec-list li,
 .detail-list li,
-.spec-list li {
-  padding: 10px 0;
+.vehicle-summary__list li {
+  padding: 11px 0;
   border-top: 1px solid var(--line);
 }
 
 .hub-card__actions,
 .hero-actions,
-.contact-band__actions {
+.contact-band__actions,
+.vehicle-summary__cta {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -188,22 +230,47 @@ input {
   padding: 0 18px;
   border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 72%, var(--brand-secondary)));
   color: var(--brand-contrast);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 600;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px color-mix(in srgb, var(--brand) 32%, transparent);
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--brand) 22%, transparent);
 }
 
 .button--ghost {
-  border-color: var(--line);
+  border-color: var(--line-strong);
   background: transparent;
   color: var(--text);
+}
+
+.price-pill,
+.inventory-card__badge,
+.chat-widget__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 12%, white);
+  color: var(--brand-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.price-stack {
+  display: grid;
+  gap: 6px;
+}
+
+.price-stack small {
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .hub-note {
@@ -218,86 +285,97 @@ input {
 .hub-features article,
 .service-card,
 .quote-card,
-.detail-card {
+.detail-card,
+.related-card {
   padding: 22px;
 }
 
 .site-shell {
-  padding: 18px 0 34px;
+  padding: 16px 0 34px;
 }
 
 .site-header {
   position: sticky;
-  top: 12px;
-  z-index: 12;
+  top: 10px;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   padding: 14px 18px;
-  margin: 10px auto 18px;
+  margin: 10px auto 24px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 14px 36px rgba(18, 18, 18, 0.06);
+}
+
+body[data-dealer="montreal-autos"] .site-header {
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  min-width: 0;
 }
 
 .brand-mark__media {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 76px;
-  min-height: 48px;
+  min-width: 84px;
+  min-height: 54px;
+}
+
+.brand-mark__logo {
+  max-width: 170px;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .brand-mark__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 54px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
   color: var(--brand-contrast);
   font-weight: 700;
 }
 
-.brand-mark__logo {
-  display: block;
-  max-width: 150px;
-  max-height: 52px;
-  object-fit: contain;
-  object-position: left center;
-}
-
-.brand-mark__text strong,
-.brand-mark__text small {
-  display: block;
+.brand-mark__text {
+  display: grid;
+  gap: 4px;
 }
 
 .brand-mark__text strong {
-  font-size: 0.98rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
 }
 
 .brand-mark__text small {
   color: var(--muted);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.68rem;
 }
 
 .main-nav {
   display: flex;
+  align-items: center;
   gap: 18px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
+}
+
+.main-nav a:hover {
+  color: var(--text);
 }
 
 .hero-section,
@@ -305,25 +383,23 @@ input {
 .services-section,
 .testimonial-section,
 .vehicle-page,
-.trust-strip {
+.related-section {
   margin-bottom: 24px;
 }
 
-.hero-grid,
-.vehicle-hero {
+.hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 24px;
   align-items: stretch;
 }
 
-.hero-copy,
-.vehicle-hero__copy {
-  padding: 26px 0;
+.hero-copy {
+  padding: 26px 0 12px;
 }
 
 .lead {
-  max-width: 64ch;
+  max-width: 65ch;
   font-size: 1.05rem;
 }
 
@@ -342,15 +418,15 @@ input {
   font-size: 1.1rem;
 }
 
-.hero-stage,
-.vehicle-stage-large {
+.hero-stage {
   position: relative;
   overflow: hidden;
-  min-height: 460px;
+  min-height: 500px;
   padding: 18px;
+  border-radius: var(--radius-xl);
   background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--brand) 30%, transparent), transparent 28%),
-    linear-gradient(160deg, color-mix(in srgb, var(--brand) 7%, white), rgba(255, 255, 255, 0.84));
+    radial-gradient(circle at top right, color-mix(in srgb, var(--brand) 22%, transparent), transparent 28%),
+    linear-gradient(160deg, color-mix(in srgb, var(--brand) 6%, white), rgba(255, 255, 255, 0.74));
 }
 
 .hero-stage__panel {
@@ -358,7 +434,11 @@ input {
   left: 18px;
   right: 18px;
   bottom: 18px;
-  padding: 18px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 36px rgba(18, 18, 18, 0.08);
 }
 
 .hero-stage__panel p,
@@ -367,86 +447,98 @@ input {
   display: block;
 }
 
+.hero-stage__panel p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
 .hero-stage__panel strong {
-  margin: 6px 0 8px;
-  font-size: 1.15rem;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.vehicle-photo,
+.vehicle-visual {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 8px);
+}
+
+.vehicle-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vehicle-photo--compact,
+.vehicle-visual.compact {
+  min-height: 230px;
 }
 
 .vehicle-visual {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 260px;
-  border-radius: calc(var(--radius) - 8px);
-  overflow: hidden;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--brand) 16%, white), rgba(255, 255, 255, 0.4)),
-    linear-gradient(135deg, rgba(17, 17, 17, 0.88), color-mix(in srgb, var(--brand-secondary) 65%, black));
-}
-
-.vehicle-visual.compact {
-  min-height: 220px;
+    linear-gradient(180deg, color-mix(in srgb, var(--brand) 10%, white), rgba(255, 255, 255, 0.24)),
+    linear-gradient(135deg, color-mix(in srgb, var(--brand-secondary) 84%, black), color-mix(in srgb, var(--brand) 34%, black));
 }
 
 .vehicle-visual__glow {
   position: absolute;
-  inset: auto -20% 24% auto;
-  width: 82%;
-  height: 82%;
+  right: -18%;
+  bottom: 12%;
+  width: 70%;
+  height: 70%;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 65%, transparent), transparent 66%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 56%, transparent), transparent 68%);
 }
 
 .vehicle-visual__panel {
   position: absolute;
+  top: 24px;
   left: 24px;
   right: 24px;
-  top: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   color: #ffffff;
 }
 
 .vehicle-visual__panel span,
 .vehicle-visual__panel small {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
 }
 
 .vehicle-visual__panel strong {
-  max-width: 11ch;
+  display: block;
+  max-width: 10ch;
+  margin: 10px 0 8px;
   font-family: "Instrument Serif", serif;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: 0.94;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
   font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
 }
 
 .vehicle-visual__road {
   position: absolute;
   left: 24px;
   right: 24px;
-  bottom: 22px;
-  height: 110px;
+  bottom: 24px;
+  height: 116px;
   border-radius: 28px;
   background:
-    linear-gradient(0deg, rgba(255, 255, 255, 0.2), transparent),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.1)),
-    radial-gradient(circle at 25% 54%, rgba(255, 255, 255, 0.9) 0 20px, transparent 21px),
-    radial-gradient(circle at 77% 54%, rgba(255, 255, 255, 0.9) 0 20px, transparent 21px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 55%, white), rgba(255, 255, 255, 0.85));
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
-    0 25px 35px rgba(17, 17, 17, 0.16);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent),
+    radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.88) 0 20px, transparent 21px),
+    radial-gradient(circle at 76% 54%, rgba(255, 255, 255, 0.88) 0 20px, transparent 21px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), color-mix(in srgb, var(--brand) 26%, white));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), 0 18px 38px rgba(18, 18, 18, 0.18);
 }
 
 .trust-strip {
-  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
 }
 
 .trust-strip__item {
@@ -455,59 +547,41 @@ input {
   align-items: flex-start;
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.76);
 }
 
 .trust-strip__item span {
-  width: 12px;
-  height: 12px;
-  margin-top: 7px;
+  flex: none;
+  width: 11px;
+  height: 11px;
+  margin-top: 8px;
   border-radius: 50%;
   background: var(--brand);
-  flex: none;
-}
-
-.inventory-section,
-.services-section {
-  padding: 12px 0;
 }
 
 .section-heading {
   display: grid;
   gap: 8px;
   max-width: 760px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .inventory-grid,
 .service-grid,
-.detail-grid,
-.testimonial-section {
+.testimonial-section,
+.related-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.inventory-card {
+.inventory-card,
+.related-card {
   overflow: hidden;
 }
 
-.inventory-card__media {
+.inventory-card__media,
+.related-card__media {
   position: relative;
-}
-
-.inventory-card__badge,
-.price-pill,
-.chat-widget__status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--brand) 14%, white);
-  color: var(--brand-dark);
-  font-size: 0.8rem;
-  font-weight: 600;
 }
 
 .inventory-card__badge {
@@ -516,12 +590,12 @@ input {
   bottom: 16px;
 }
 
-.inventory-card__body {
+.inventory-card__body,
+.related-card__body {
   padding: 20px;
 }
 
-.inventory-card__head,
-.price-row {
+.inventory-card__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -532,62 +606,128 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 18px 0;
 }
 
 .spec-list li {
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .service-card h3 {
   font-family: "Instrument Serif", serif;
-  font-size: 1.8rem;
+  font-size: 1.84rem;
   font-weight: 400;
-}
-
-.contact-band {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 24px;
-  margin-bottom: 24px;
 }
 
 .quote-card {
   display: grid;
   align-content: space-between;
+  gap: 16px;
+}
+
+.contact-band,
+.vehicle-commercial-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 18px;
+  padding: 24px;
 }
 
 .chat-widget {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 20;
-  width: min(360px, calc(100vw - 28px));
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  width: min(380px, calc(100vw - 24px));
   overflow: hidden;
 }
 
-.chat-widget__header,
-.chat-form {
+.chat-widget__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 14px;
+  gap: 14px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--line);
+}
+
+.chat-widget__identity,
+.chat-widget__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-widget__identity {
+  min-width: 0;
+}
+
+.chat-widget__identity small,
+.chat-widget__identity strong {
+  display: block;
+}
+
+.chat-widget__identity small {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.chat-widget__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.chat-widget__toggle {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.chat-widget__body {
+  display: grid;
+  gap: 12px;
+}
+
+.chat-widget--collapsed .chat-widget__body {
+  display: none;
 }
 
 .chat-messages {
   display: grid;
-  gap: 10px;
-  max-height: 260px;
+  gap: 12px;
+  max-height: 280px;
   overflow: auto;
-  padding: 14px;
+  padding: 14px 14px 0;
+}
+
+.chat-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.chat-row--user {
+  justify-content: flex-end;
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  border: 1px solid var(--line);
+  background: #ffffff;
 }
 
 .chat-bubble {
@@ -595,187 +735,47 @@ input {
   padding: 12px 14px;
   border-radius: 18px;
   font-size: 0.93rem;
-  line-height: 1.55;
+  line-height: 1.58;
 }
 
 .chat-bubble--bot {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.88);
 }
 
 .chat-bubble--user {
-  margin-left: auto;
   background: var(--brand);
-  color: white;
+  color: var(--brand-contrast);
 }
 
 .chat-suggestions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0 14px 14px;
+  padding: 0 14px;
 }
 
 .suggestion-pill {
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: transparent;
-  padding: 10px 12px;
+  background: #ffffff;
+  padding: 10px 13px;
   cursor: pointer;
 }
 
 .chat-form {
-  border-top: 1px solid var(--line);
-  border-bottom: 0;
+  display: flex;
+  gap: 10px;
+  padding: 0 14px 14px;
 }
 
 .chat-form input {
   flex: 1;
   min-height: 48px;
   padding: 0 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-}
-
-body[data-dealer="autos-sv"] {
-  background:
-    radial-gradient(circle at 12% 10%, rgba(242, 239, 29, 0.42), transparent 18%),
-    radial-gradient(circle at 88% 18%, rgba(225, 22, 25, 0.22), transparent 20%),
-    linear-gradient(135deg, #121212 0%, #1f1f1f 18%, #fffef0 18%, #fffef0 100%);
-}
-
-body[data-dealer="autos-sv"] .site-header {
-  background: rgba(255, 250, 120, 0.9);
-  border-color: rgba(225, 22, 25, 0.35);
-}
-
-body[data-dealer="autos-sv"] .main-nav,
-body[data-dealer="autos-sv"] .brand-mark__text small {
-  color: #302b2b;
-}
-
-body[data-dealer="autos-sv"] .brand-mark__icon {
-  background: linear-gradient(135deg, #111111, #2d2d2d);
-  color: #f2ef1d;
-  box-shadow: inset 0 0 0 2px #e11619;
-}
-
-body[data-dealer="autos-sv"] .brand-mark__logo {
-  max-width: 172px;
-  max-height: 62px;
-}
-
-body[data-dealer="autos-sv"] .brand-mark__text strong {
-  color: #111111;
-  text-shadow: 2px 2px 0 rgba(225, 22, 25, 0.12);
-}
-
-body[data-dealer="autos-sv"] .hero-stage,
-body[data-dealer="autos-sv"] .vehicle-stage-large,
-body[data-dealer="autos-sv"] .vehicle-visual {
-  background:
-    linear-gradient(180deg, rgba(242, 239, 29, 0.1), transparent 30%),
-    linear-gradient(135deg, #111111 0%, #1b1b1b 56%, #5c0909 100%);
-}
-
-body[data-dealer="autos-sv"] .vehicle-visual__panel small,
-body[data-dealer="autos-sv"] .vehicle-visual__panel span {
-  color: rgba(242, 239, 29, 0.84);
-}
-
-body[data-dealer="autos-sv"] .hero-stage__panel,
-body[data-dealer="autos-sv"] .stat-card,
-body[data-dealer="autos-sv"] .inventory-card,
-body[data-dealer="autos-sv"] .service-card,
-body[data-dealer="autos-sv"] .quote-card,
-body[data-dealer="autos-sv"] .detail-card,
-body[data-dealer="autos-sv"] .contact-band,
-body[data-dealer="autos-sv"] .chat-widget {
-  border-color: rgba(225, 22, 25, 0.15);
-}
-
-body[data-dealer="matesich-autos"] {
-  background:
-    radial-gradient(circle at top right, rgba(217, 7, 0, 0.15), transparent 18%),
-    linear-gradient(180deg, #f5f1ef 0%, #ffffff 34%, #faf7f6 100%);
-}
-
-body[data-dealer="matesich-autos"] .site-header {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(217, 7, 0, 0.16);
-}
-
-body[data-dealer="matesich-autos"] .brand-mark__icon {
-  background: linear-gradient(135deg, #d90700, #830300);
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-body[data-dealer="matesich-autos"] .brand-mark__logo {
-  max-width: 140px;
-  max-height: 50px;
-  border-radius: 8px;
-  box-shadow: 0 8px 22px rgba(217, 7, 0, 0.14);
-}
-
-body[data-dealer="matesich-autos"] .brand-mark__text strong {
-  color: #d90700;
-  letter-spacing: 0.1em;
-}
-
-body[data-dealer="matesich-autos"] .brand-mark__text small {
-  color: #2d2d2d;
-}
-
-body[data-dealer="matesich-autos"] .hero-stage,
-body[data-dealer="matesich-autos"] .vehicle-stage-large,
-body[data-dealer="matesich-autos"] .vehicle-visual {
-  background:
-    linear-gradient(180deg, rgba(217, 7, 0, 0.06), transparent 26%),
-    linear-gradient(135deg, #1b0b0a 0%, #3b1110 42%, #6a0d0a 100%);
-}
-
-body[data-dealer="montreal-autos"] {
-  background:
-    radial-gradient(circle at 78% 14%, rgba(48, 87, 255, 0.22), transparent 18%),
-    radial-gradient(circle at 18% 18%, rgba(141, 220, 255, 0.14), transparent 18%),
-    linear-gradient(180deg, #0f1426 0%, #1b233a 16%, #eef4ff 16%, #f4f8ff 100%);
-}
-
-body[data-dealer="montreal-autos"] .site-header {
-  background: rgba(14, 20, 38, 0.86);
-  border-color: rgba(141, 220, 255, 0.16);
-  color: #f6f8ff;
-}
-
-body[data-dealer="montreal-autos"] .main-nav,
-body[data-dealer="montreal-autos"] .brand-mark__text small {
-  color: rgba(246, 248, 255, 0.74);
-}
-
-body[data-dealer="montreal-autos"] .brand-mark__icon {
-  background: linear-gradient(135deg, #0f1426, #3057ff);
-  color: #dce5ff;
-  box-shadow: inset 0 0 0 1px rgba(141, 220, 255, 0.28);
-}
-
-body[data-dealer="montreal-autos"] .brand-mark__logo {
-  max-width: 168px;
-  max-height: 58px;
-}
-
-body[data-dealer="montreal-autos"] .brand-mark__text strong {
-  color: #9dc0ff;
-  letter-spacing: 0.14em;
-}
-
-body[data-dealer="montreal-autos"] .hero-stage,
-body[data-dealer="montreal-autos"] .vehicle-stage-large,
-body[data-dealer="montreal-autos"] .vehicle-visual {
-  background:
-    radial-gradient(circle at top center, rgba(84, 126, 255, 0.26), transparent 34%),
-    linear-gradient(135deg, #0f1426 0%, #1a2243 42%, #243c8d 100%);
+  background: #ffffff;
 }
 
 .vehicle-page {
@@ -783,62 +783,232 @@ body[data-dealer="montreal-autos"] .vehicle-visual {
   gap: 24px;
 }
 
-.vehicle-stage-large {
-  min-height: 420px;
+.vehicle-detail-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  align-items: start;
+}
+
+.vehicle-gallery {
+  padding: 20px;
+}
+
+.vehicle-gallery__main {
+  height: 510px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+}
+
+.vehicle-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vehicle-gallery__main--visual {
   padding: 18px;
 }
 
-.detail-list strong {
-  margin-right: 8px;
+.vehicle-gallery__fallback {
+  height: 100%;
 }
 
-@media (max-width: 1100px) {
+.vehicle-gallery__main--visual .vehicle-visual,
+.vehicle-gallery__main--visual .vehicle-photo {
+  height: 100%;
+  min-height: 100%;
+}
+
+.vehicle-gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.vehicle-thumb {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.vehicle-thumb img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+}
+
+.vehicle-thumb.is-active {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 24%, transparent);
+}
+
+.vehicle-gallery__hint {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--brand) 4%, white);
+}
+
+.vehicle-summary {
+  padding: 24px;
+  position: sticky;
+  top: 102px;
+}
+
+.vehicle-summary__top {
+  margin-bottom: 18px;
+}
+
+.vehicle-summary__price {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.vehicle-summary__meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.vehicle-summary__seller {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--brand) 4%, white);
+}
+
+.vehicle-summary__seller-logo {
+  width: 82px;
+  max-height: 48px;
+  object-fit: contain;
+  flex: none;
+}
+
+.vehicle-summary__seller strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.vehicle-summary__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vehicle-summary__list li span {
+  color: var(--muted);
+}
+
+.vehicle-info-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+}
+
+.detail-card--wide {
+  min-height: 100%;
+}
+
+.detail-list li {
+  color: var(--text);
+}
+
+.related-card__body h3 {
+  font-size: 1.36rem;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body[data-dealer="autos-sv"] .price-pill,
+body[data-dealer="autos-sv"] .inventory-card__badge,
+body[data-dealer="autos-sv"] .chat-widget__status {
+  background: rgba(219, 31, 38, 0.12);
+  color: #8f161b;
+}
+
+body[data-dealer="matesich-autos"] .site-header {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body[data-dealer="montreal-autos"] .price-pill,
+body[data-dealer="montreal-autos"] .inventory-card__badge,
+body[data-dealer="montreal-autos"] .chat-widget__status {
+  background: rgba(19, 159, 228, 0.14);
+  color: #0d4b89;
+}
+
+@media (max-width: 1120px) {
   .hub-grid,
   .hub-features,
+  .trust-strip,
   .inventory-grid,
   .service-grid,
-  .detail-grid,
   .testimonial-section,
-  .trust-strip,
   .stats-row,
+  .related-grid,
   .hero-grid,
-  .vehicle-hero {
+  .vehicle-detail-grid,
+  .vehicle-info-grid {
     grid-template-columns: 1fr 1fr;
   }
 
   .hero-grid > :first-child,
-  .vehicle-hero > :first-child {
+  .vehicle-detail-grid > :first-child,
+  .vehicle-info-grid > :first-child {
     grid-column: 1 / -1;
   }
 
   .main-nav {
     display: none;
   }
+
+  .vehicle-summary {
+    position: static;
+  }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 820px) {
   .hub-grid,
   .hub-features,
+  .trust-strip,
   .inventory-grid,
   .service-grid,
-  .detail-grid,
   .testimonial-section,
-  .trust-strip,
   .stats-row,
+  .related-grid,
   .hero-grid,
-  .vehicle-hero {
+  .vehicle-detail-grid,
+  .vehicle-info-grid {
     grid-template-columns: 1fr;
   }
 
   .site-header,
   .contact-band,
+  .vehicle-commercial-band,
   .chat-form {
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
   }
 
   .site-header {
-    border-radius: 24px;
+    border-radius: 28px;
   }
 
   .hub-shell,
@@ -846,26 +1016,47 @@ body[data-dealer="montreal-autos"] .vehicle-visual {
     width: min(100%, calc(100% - 20px));
   }
 
-  .hub-hero h1,
-  .hero-copy h1,
-  .vehicle-hero__copy h1 {
-    font-size: clamp(2.5rem, 13vw, 4rem);
+  .vehicle-gallery__main,
+  .vehicle-gallery__main img {
+    height: 360px;
   }
 
-  .hero-stage,
-  .vehicle-stage-large {
-    min-height: 360px;
+  .vehicle-gallery__thumbs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .chat-widget {
     position: static;
     width: 100%;
-    margin: 24px 0 0;
   }
 
-  .chat-form .button,
-  .contact-band__actions .button,
-  .hero-actions .button {
+  .button,
+  .button--ghost {
     width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-stage {
+    min-height: 380px;
+  }
+
+  .hero-stage__panel {
+    position: static;
+    margin-top: 14px;
+  }
+
+  .brand-mark__logo {
+    max-width: 132px;
+  }
+
+  .vehicle-thumb img {
+    height: 82px;
+  }
+
+  .hub-hero h1,
+  .hero-copy h1,
+  .vehicle-summary h1 {
+    font-size: clamp(2.4rem, 13vw, 4rem);
   }
 }
