@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
   --brand: #db1f26;
@@ -8,15 +8,15 @@
   --brand-dark: #111111;
   --surface: #fbfbfb;
   --surface-strong: #ffffff;
-  --text: #121212;
-  --muted: #5e5e5e;
+  --text: #171717;
+  --muted: #5f6368;
   --line: rgba(18, 18, 18, 0.1);
   --line-strong: rgba(18, 18, 18, 0.16);
-  --shadow: 0 24px 70px rgba(18, 18, 18, 0.09);
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 18px;
-  --radius-sm: 14px;
+  --shadow: 0 16px 40px rgba(18, 18, 18, 0.06);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
 }
 
 * {
@@ -30,31 +30,27 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Sora", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--brand) 12%, transparent), transparent 24%),
-    linear-gradient(180deg, var(--surface) 0%, #ffffff 52%, var(--surface) 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, #ffffff 100%);
 }
 
 body[data-dealer="autos-sv"] {
   background:
-    radial-gradient(circle at 16% 10%, rgba(219, 31, 38, 0.12), transparent 18%),
-    radial-gradient(circle at 88% 14%, rgba(23, 23, 23, 0.06), transparent 18%),
-    linear-gradient(180deg, #fafafa 0%, #ffffff 48%, #f7f7f7 100%);
+    radial-gradient(circle at 10% 8%, rgba(219, 31, 38, 0.08), transparent 22%),
+    linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
 }
 
 body[data-dealer="matesich-autos"] {
   background:
-    radial-gradient(circle at 82% 10%, rgba(239, 35, 44, 0.12), transparent 18%),
-    linear-gradient(180deg, #fff7f8 0%, #ffffff 52%, #fff7f8 100%);
+    radial-gradient(circle at 90% 8%, rgba(239, 35, 44, 0.08), transparent 22%),
+    linear-gradient(180deg, #fff8f8 0%, #ffffff 100%);
 }
 
 body[data-dealer="montreal-autos"] {
   background:
-    radial-gradient(circle at 82% 12%, rgba(19, 159, 228, 0.16), transparent 20%),
-    radial-gradient(circle at 16% 10%, rgba(11, 29, 77, 0.08), transparent 16%),
-    linear-gradient(180deg, #f5f9fe 0%, #ffffff 54%, #f5f9fe 100%);
+    radial-gradient(circle at 88% 8%, rgba(19, 159, 228, 0.12), transparent 24%),
+    linear-gradient(180deg, #f6faff 0%, #ffffff 100%);
 }
 
 a {
@@ -86,59 +82,73 @@ img {
 .micro-copy {
   margin: 0;
   color: var(--brand);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .hub-hero {
-  max-width: 820px;
+  max-width: 780px;
 }
 
 .hub-hero h1,
-.hero-copy h1,
-.vehicle-summary h1 {
-  margin: 12px 0 18px;
-  font-family: "Instrument Serif", serif;
-  font-weight: 400;
-  line-height: 0.95;
+.intro-strip__copy h1,
+.vehicle-hero-head h1,
+.vehicle-summary h2 {
+  margin: 10px 0 14px;
+  font-weight: 800;
+  line-height: 1.02;
   letter-spacing: -0.05em;
 }
 
-.hub-hero h1,
-.hero-copy h1 {
-  font-size: clamp(3rem, 6vw, 5.5rem);
+.hub-hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
 }
 
-.vehicle-summary h1 {
-  font-size: clamp(2.6rem, 5vw, 4.6rem);
+.intro-strip__copy h1 {
+  font-size: clamp(2.3rem, 4.7vw, 3.9rem);
+  max-width: 14ch;
+}
+
+.vehicle-hero-head h1 {
+  font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+  max-width: 14ch;
+}
+
+.vehicle-summary h2 {
+  font-size: 1.5rem;
 }
 
 .hub-copy,
 .lead,
 .section-heading p,
-.inventory-card p,
+.inventory-slide__copy,
+.inventory-slide__meta,
 .service-card p,
-.quote-card p,
 .detail-card p,
 .contact-band p,
 .vehicle-summary p,
 .vehicle-gallery__hint p,
-.related-card p {
+.related-card p,
+.quick-stat p,
+.vehicle-hero-head__price p,
+.point-card p,
+.step-card p,
+.trust-strip__item p {
   color: var(--muted);
-  line-height: 1.72;
+  line-height: 1.65;
 }
 
 .hub-grid,
 .hub-features,
-.inventory-grid,
-.service-grid,
-.testimonial-section,
-.stats-row,
 .trust-strip,
+.service-grid,
+.related-grid,
 .vehicle-detail-grid,
 .vehicle-info-grid,
-.related-grid {
+.detail-points,
+.sales-steps {
   display: grid;
   gap: 18px;
 }
@@ -150,27 +160,29 @@ img {
 
 .hub-card,
 .hub-note,
-.inventory-card,
+.inventory-slide,
 .service-card,
-.quote-card,
-.stat-card,
+.quick-stat,
 .contact-band,
 .chat-widget,
 .vehicle-gallery,
 .vehicle-summary,
 .detail-card,
-.related-card {
+.related-card,
+.vehicle-hero-head__price,
+.point-card,
+.step-card,
+.trust-strip__item {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
 }
 
 .hub-card {
   padding: 28px;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--card-brand) 9%, white), white),
+    linear-gradient(180deg, color-mix(in srgb, var(--card-brand) 7%, white), white),
     var(--card-surface);
 }
 
@@ -192,12 +204,15 @@ img {
 .section-heading h2,
 .service-card h3,
 .detail-card h2,
-.related-card h3 {
+.related-card h3,
+.inventory-slide h3,
+.step-card h3,
+.contact-band h2,
+.vehicle-commercial-band h2 {
   margin: 0 0 12px;
 }
 
 .hub-card__list,
-.spec-list,
 .detail-list,
 .vehicle-summary__list {
   margin: 18px 0 22px;
@@ -206,7 +221,6 @@ img {
 }
 
 .hub-card__list li,
-.spec-list li,
 .detail-list li,
 .vehicle-summary__list li {
   padding: 11px 0;
@@ -229,43 +243,50 @@ img {
   min-height: 48px;
   padding: 0 18px;
   border: 1px solid transparent;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 72%, var(--brand-secondary)));
+  border-radius: 14px;
+  background: var(--brand);
   color: var(--brand-contrast);
-  font-size: 0.94rem;
-  font-weight: 600;
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
 }
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px color-mix(in srgb, var(--brand) 22%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand) 18%, transparent);
 }
 
 .button--ghost {
   border-color: var(--line-strong);
-  background: transparent;
+  background: #ffffff;
   color: var(--text);
 }
 
 .price-pill,
-.inventory-card__badge,
-.chat-widget__status {
+.inventory-slide__badge,
+.chat-widget__status,
+.feature-chip,
+.carousel-button,
+.service-card__index {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.price-stack {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.price-pill {
   min-height: 34px;
   padding: 0 14px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--brand) 12%, white);
   color: var(--brand-dark);
   font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.price-stack {
-  display: grid;
-  gap: 6px;
+  font-weight: 800;
 }
 
 .price-stack small {
@@ -284,14 +305,15 @@ img {
 
 .hub-features article,
 .service-card,
-.quote-card,
 .detail-card,
-.related-card {
+.related-card,
+.point-card,
+.step-card {
   padding: 22px;
 }
 
 .site-shell {
-  padding: 16px 0 34px;
+  padding: 18px 0 36px;
 }
 
 .site-header {
@@ -302,17 +324,12 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 14px 18px;
-  margin: 10px auto 24px;
+  padding: 12px 16px;
+  margin: 10px auto 22px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 14px 36px rgba(18, 18, 18, 0.06);
-}
-
-body[data-dealer="montreal-autos"] .site-header {
-  background: rgba(255, 255, 255, 0.78);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(18, 18, 18, 0.05);
 }
 
 .brand-mark {
@@ -356,7 +373,7 @@ body[data-dealer="montreal-autos"] .site-header {
 
 .brand-mark__text strong {
   font-size: 1rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .brand-mark__text small {
@@ -378,99 +395,180 @@ body[data-dealer="montreal-autos"] .site-header {
   color: var(--text);
 }
 
-.hero-section,
-.inventory-section,
+.intro-strip,
+.stock-showcase,
 .services-section,
-.testimonial-section,
+.related-section,
 .vehicle-page,
-.related-section {
+.vehicle-commercial-band,
+.contact-band {
   margin-bottom: 24px;
 }
 
-.hero-grid {
+.intro-strip {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
+  gap: 22px;
+  align-items: start;
 }
 
-.hero-copy {
-  padding: 26px 0 12px;
-}
-
-.lead {
-  max-width: 65ch;
-  font-size: 1.05rem;
-}
-
-.stats-row {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 26px;
-}
-
-.stat-card {
-  padding: 18px;
-}
-
-.stat-card strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.hero-stage {
-  position: relative;
-  overflow: hidden;
-  min-height: 500px;
-  padding: 18px;
+.intro-strip__copy,
+.intro-strip__side {
+  padding: 24px;
+  border: 1px solid var(--line);
   border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--brand) 22%, transparent), transparent 28%),
-    linear-gradient(160deg, color-mix(in srgb, var(--brand) 6%, white), rgba(255, 255, 255, 0.74));
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
 }
 
-.hero-stage__panel {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+.intro-strip__side {
+  display: grid;
+  gap: 18px;
+}
+
+.intro-strip__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quick-stat {
+  padding: 16px;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: 0 18px 36px rgba(18, 18, 18, 0.08);
 }
 
-.hero-stage__panel p,
-.hero-stage__panel strong,
-.hero-stage__panel small {
+.quick-stat strong {
   display: block;
-}
-
-.hero-stage__panel p {
-  margin: 0 0 10px;
-  color: var(--muted);
-}
-
-.hero-stage__panel strong {
   margin-bottom: 8px;
-  font-size: 1.2rem;
-  line-height: 1.4;
+  font-size: 1rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 8px;
+  max-width: 860px;
+  margin-bottom: 16px;
+}
+
+.section-heading--split {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: none;
+}
+
+.carousel-shell {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.carousel-button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.inventory-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(292px, 32%);
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.inventory-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.inventory-slide,
+.related-card {
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.inventory-slide__media,
+.related-card__media {
+  position: relative;
+  padding: 16px 16px 0;
+}
+
+.inventory-slide__badge {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.inventory-slide__body,
+.related-card__body {
+  display: grid;
+  gap: 12px;
+  padding: 18px 18px 20px;
+}
+
+.inventory-slide__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inventory-slide__meta {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.inventory-slide__copy {
+  margin: 0;
+}
+
+.inventory-slide__footer {
+  display: grid;
+  gap: 10px;
+}
+
+.inventory-slide__hook {
+  font-size: 0.88rem;
+  color: var(--muted);
 }
 
 .vehicle-photo,
 .vehicle-visual {
   width: 100%;
   height: 100%;
-  min-height: 320px;
+  min-height: 300px;
   overflow: hidden;
-  border-radius: calc(var(--radius-xl) - 8px);
+  border-radius: calc(var(--radius-xl) - 6px);
+}
+
+.vehicle-photo {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), color-mix(in srgb, var(--brand) 3%, white));
+  border: 1px solid var(--line);
 }
 
 .vehicle-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 22px;
 }
 
 .vehicle-photo--compact,
@@ -480,61 +578,61 @@ body[data-dealer="montreal-autos"] .site-header {
 
 .vehicle-visual {
   position: relative;
+  border: 1px solid var(--line);
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--brand) 10%, white), rgba(255, 255, 255, 0.24)),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand-secondary) 84%, black), color-mix(in srgb, var(--brand) 34%, black));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), color-mix(in srgb, var(--brand) 10%, white)),
+    linear-gradient(135deg, color-mix(in srgb, var(--brand-secondary) 70%, white), color-mix(in srgb, var(--brand) 18%, white));
 }
 
 .vehicle-visual__glow {
   position: absolute;
-  right: -18%;
-  bottom: 12%;
-  width: 70%;
-  height: 70%;
+  right: -16%;
+  bottom: 10%;
+  width: 64%;
+  height: 64%;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 56%, transparent), transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 24%, transparent), transparent 68%);
 }
 
 .vehicle-visual__panel {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  right: 24px;
-  color: #ffffff;
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  color: var(--brand-secondary);
 }
 
 .vehicle-visual__panel span,
 .vehicle-visual__panel small {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--brand-secondary) 70%, white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .vehicle-visual__panel strong {
   display: block;
-  max-width: 10ch;
+  max-width: 12ch;
   margin: 10px 0 8px;
-  font-family: "Instrument Serif", serif;
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
 .vehicle-visual__road {
   position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-  height: 116px;
-  border-radius: 28px;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  height: 92px;
+  border-radius: 22px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent),
-    radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.88) 0 20px, transparent 21px),
-    radial-gradient(circle at 76% 54%, rgba(255, 255, 255, 0.88) 0 20px, transparent 21px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.92), color-mix(in srgb, var(--brand) 26%, white));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), 0 18px 38px rgba(18, 18, 18, 0.18);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.95)),
+    radial-gradient(circle at 24% 54%, rgba(255, 255, 255, 0.95) 0 16px, transparent 17px),
+    radial-gradient(circle at 76% 54%, rgba(255, 255, 255, 0.95) 0 16px, transparent 17px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .trust-strip {
@@ -546,85 +644,44 @@ body[data-dealer="montreal-autos"] .site-header {
   gap: 12px;
   align-items: flex-start;
   padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.76);
 }
 
 .trust-strip__item span {
   flex: none;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   margin-top: 8px;
   border-radius: 50%;
   background: var(--brand);
 }
 
-.section-heading {
-  display: grid;
-  gap: 8px;
-  max-width: 760px;
-  margin-bottom: 20px;
-}
-
-.inventory-grid,
 .service-grid,
-.testimonial-section,
-.related-grid {
+.related-grid,
+.sales-steps {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.inventory-card,
-.related-card {
-  overflow: hidden;
-}
-
-.inventory-card__media,
-.related-card__media {
-  position: relative;
-}
-
-.inventory-card__badge {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-}
-
-.inventory-card__body,
-.related-card__body {
-  padding: 20px;
-}
-
-.inventory-card__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.service-card {
+  display: grid;
   gap: 12px;
 }
 
-.spec-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.service-card__index {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--brand) 10%, white);
+  color: var(--brand-dark);
+  font-size: 0.86rem;
+  font-weight: 800;
 }
 
-.spec-list li {
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.84);
-}
-
-.service-card h3 {
-  font-family: "Instrument Serif", serif;
-  font-size: 1.84rem;
-  font-weight: 400;
-}
-
-.quote-card {
-  display: grid;
-  align-content: space-between;
-  gap: 16px;
+.service-card h3,
+.related-card__body h3,
+.step-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .contact-band,
@@ -684,6 +741,16 @@ body[data-dealer="montreal-autos"] .site-header {
   border: 1px solid var(--line);
 }
 
+.chat-widget__status {
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 12%, white);
+  color: var(--brand-dark);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
 .chat-widget__toggle {
   width: 34px;
   height: 34px;
@@ -733,14 +800,14 @@ body[data-dealer="montreal-autos"] .site-header {
 .chat-bubble {
   max-width: 88%;
   padding: 12px 14px;
-  border-radius: 18px;
+  border-radius: 16px;
   font-size: 0.93rem;
   line-height: 1.58;
 }
 
 .chat-bubble--bot {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .chat-bubble--user {
@@ -774,7 +841,7 @@ body[data-dealer="montreal-autos"] .site-header {
   min-height: 48px;
   padding: 0 14px;
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
+  border-radius: 14px;
   background: #ffffff;
 }
 
@@ -783,17 +850,58 @@ body[data-dealer="montreal-autos"] .site-header {
   gap: 24px;
 }
 
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.vehicle-hero-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vehicle-hero-head__copy {
+  max-width: 760px;
+}
+
+.vehicle-hero-head__price {
+  width: min(360px, 100%);
+  padding: 22px;
+}
+
+.feature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.feature-chip {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
 .vehicle-detail-grid {
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
   align-items: start;
 }
 
 .vehicle-gallery {
-  padding: 20px;
+  padding: 18px;
 }
 
 .vehicle-gallery__main {
-  height: 510px;
+  height: 520px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -803,7 +911,8 @@ body[data-dealer="montreal-autos"] .site-header {
 .vehicle-gallery__main img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 26px;
 }
 
 .vehicle-gallery__main--visual {
@@ -844,7 +953,7 @@ body[data-dealer="montreal-autos"] .site-header {
 
 .vehicle-thumb.is-active {
   border-color: var(--brand);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 24%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 22%, transparent);
 }
 
 .vehicle-gallery__hint {
@@ -867,17 +976,10 @@ body[data-dealer="montreal-autos"] .site-header {
   margin-bottom: 18px;
 }
 
-.vehicle-summary__price {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
+.vehicle-summary__cta {
+  display: grid;
+  gap: 10px;
   margin-bottom: 18px;
-}
-
-.vehicle-summary__meta {
-  color: var(--muted);
-  font-size: 0.88rem;
 }
 
 .vehicle-summary__seller {
@@ -915,41 +1017,60 @@ body[data-dealer="montreal-autos"] .site-header {
 }
 
 .vehicle-info-grid {
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
 }
 
 .detail-card--wide {
   min-height: 100%;
 }
 
+.detail-points {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.point-card {
+  padding: 18px;
+}
+
+.point-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
 .detail-list li {
   color: var(--text);
 }
 
-.related-card__body h3 {
-  font-size: 1.36rem;
+.step-card {
+  display: grid;
+  gap: 10px;
 }
 
-.price-row {
-  display: flex;
+.step-card span {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--brand) 10%, white);
+  color: var(--brand-dark);
+  font-weight: 800;
 }
 
 body[data-dealer="autos-sv"] .price-pill,
-body[data-dealer="autos-sv"] .inventory-card__badge,
-body[data-dealer="autos-sv"] .chat-widget__status {
+body[data-dealer="autos-sv"] .chat-widget__status,
+body[data-dealer="autos-sv"] .service-card__index,
+body[data-dealer="autos-sv"] .step-card span {
   background: rgba(219, 31, 38, 0.12);
   color: #8f161b;
 }
 
-body[data-dealer="matesich-autos"] .site-header {
-  background: rgba(255, 255, 255, 0.9);
-}
-
 body[data-dealer="montreal-autos"] .price-pill,
-body[data-dealer="montreal-autos"] .inventory-card__badge,
-body[data-dealer="montreal-autos"] .chat-widget__status {
+body[data-dealer="montreal-autos"] .chat-widget__status,
+body[data-dealer="montreal-autos"] .service-card__index,
+body[data-dealer="montreal-autos"] .step-card span {
   background: rgba(19, 159, 228, 0.14);
   color: #0d4b89;
 }
@@ -958,18 +1079,17 @@ body[data-dealer="montreal-autos"] .chat-widget__status {
   .hub-grid,
   .hub-features,
   .trust-strip,
-  .inventory-grid,
   .service-grid,
-  .testimonial-section,
-  .stats-row,
   .related-grid,
-  .hero-grid,
+  .sales-steps,
+  .detail-points,
   .vehicle-detail-grid,
-  .vehicle-info-grid {
+  .vehicle-info-grid,
+  .intro-strip {
     grid-template-columns: 1fr 1fr;
   }
 
-  .hero-grid > :first-child,
+  .intro-strip > :first-child,
   .vehicle-detail-grid > :first-child,
   .vehicle-info-grid > :first-child {
     grid-column: 1 / -1;
@@ -982,38 +1102,62 @@ body[data-dealer="montreal-autos"] .chat-widget__status {
   .vehicle-summary {
     position: static;
   }
+
+  .inventory-carousel {
+    grid-auto-columns: minmax(300px, 48%);
+  }
+
+  .section-heading--split,
+  .vehicle-hero-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 @media (max-width: 820px) {
   .hub-grid,
   .hub-features,
   .trust-strip,
-  .inventory-grid,
   .service-grid,
-  .testimonial-section,
-  .stats-row,
   .related-grid,
-  .hero-grid,
+  .sales-steps,
+  .detail-points,
   .vehicle-detail-grid,
-  .vehicle-info-grid {
+  .vehicle-info-grid,
+  .intro-strip,
+  .intro-strip__stats {
     grid-template-columns: 1fr;
   }
 
   .site-header,
   .contact-band,
   .vehicle-commercial-band,
-  .chat-form {
+  .chat-form,
+  .carousel-shell {
     flex-direction: column;
     align-items: stretch;
   }
 
+  .carousel-shell {
+    display: flex;
+  }
+
+  .carousel-button {
+    width: 100%;
+    height: 44px;
+  }
+
   .site-header {
-    border-radius: 28px;
+    border-radius: 18px;
   }
 
   .hub-shell,
   .site-shell {
     width: min(100%, calc(100% - 20px));
+  }
+
+  .inventory-carousel {
+    grid-auto-columns: 88%;
   }
 
   .vehicle-gallery__main,
@@ -1037,15 +1181,6 @@ body[data-dealer="montreal-autos"] .chat-widget__status {
 }
 
 @media (max-width: 560px) {
-  .hero-stage {
-    min-height: 380px;
-  }
-
-  .hero-stage__panel {
-    position: static;
-    margin-top: 14px;
-  }
-
   .brand-mark__logo {
     max-width: 132px;
   }
@@ -1055,8 +1190,8 @@ body[data-dealer="montreal-autos"] .chat-widget__status {
   }
 
   .hub-hero h1,
-  .hero-copy h1,
-  .vehicle-summary h1 {
-    font-size: clamp(2.4rem, 13vw, 4rem);
+  .intro-strip__copy h1,
+  .vehicle-hero-head h1 {
+    font-size: clamp(2rem, 11vw, 3.4rem);
   }
 }

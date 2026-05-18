@@ -15,6 +15,10 @@
     return `tel:${phone.replace(/[^\d+]/g, "")}`;
   }
 
+  function whatsappMessage(dealer, text) {
+    return `https://wa.me/${dealer.whatsapp}?text=${encodeURIComponent(text)}`;
+  }
+
   function currencyTag(price, note) {
     return `
       <div class="price-stack">
@@ -68,35 +72,30 @@
     `;
   }
 
-  function buildInventoryCards(dealer) {
-    return dealer.inventory
-      .map(
-        (vehicle) => `
-          <article class="inventory-card">
-            <div class="inventory-card__media">
-              ${buildVehicleVisual(vehicle, true)}
-              <span class="inventory-card__badge">${vehicle.badge}</span>
+  function buildInventorySlide(vehicle) {
+    return `
+      <article class="inventory-slide">
+        <div class="inventory-slide__media">
+          ${buildVehicleVisual(vehicle, true)}
+          <span class="inventory-slide__badge">${vehicle.badge}</span>
+        </div>
+        <div class="inventory-slide__body">
+          <div class="inventory-slide__heading">
+            <div>
+              <p class="micro-copy">${vehicle.year} · ${vehicle.km}</p>
+              <h3>${vehicle.name}</h3>
             </div>
-            <div class="inventory-card__body">
-              <div class="inventory-card__head">
-                <div>
-                  <p class="micro-copy">${vehicle.year} | ${vehicle.km}</p>
-                  <h3>${vehicle.name}</h3>
-                </div>
-                ${currencyTag(vehicle.price)}
-              </div>
-              <p>${vehicle.description}</p>
-              <ul class="spec-list">
-                <li>${vehicle.transmission}</li>
-                <li>${vehicle.fuel}</li>
-                <li>${vehicle.segment}</li>
-              </ul>
-              <a class="button button--ghost" href="./vehiculo.html?modelo=${vehicle.id}">Ver este vehiculo</a>
-            </div>
-          </article>
-        `
-      )
-      .join("");
+            ${currencyTag(vehicle.price)}
+          </div>
+          <p class="inventory-slide__meta">${vehicle.segment} · ${vehicle.transmission} · ${vehicle.fuel}</p>
+          <p class="inventory-slide__copy">${vehicle.description}</p>
+          <div class="inventory-slide__footer">
+            <a class="button" href="./vehiculo.html?modelo=${vehicle.id}">Ver vehiculo</a>
+            <span class="inventory-slide__hook">${vehicle.hook}</span>
+          </div>
+        </div>
+      </article>
+    `;
   }
 
   function buildHubCard(dealer) {
@@ -109,8 +108,8 @@
         <h2>${dealer.name}</h2>
         <p>${dealer.tagline}</p>
         <ul class="hub-card__list">
-          <li>Inicio comercial</li>
-          <li>Destacados del stock</li>
+          <li>Inicio con stock destacado</li>
+          <li>Carrusel comercial de unidades</li>
           <li>Ficha completa del vehiculo</li>
           <li>Asesor virtual 24/7</li>
         </ul>
@@ -172,37 +171,46 @@
         </header>
 
         <main>
-          <section class="hero-section">
-            <div class="hero-grid">
-              <div class="hero-copy">
-                <p class="eyebrow">${dealer.eyebrow}</p>
-                <h1>${dealer.heroTitle}</h1>
-                <p class="lead">${dealer.heroLead}</p>
-                <div class="hero-actions">
-                  <a class="button" href="#stock">Ver destacados</a>
-                  <a class="button button--ghost" href="https://wa.me/${dealer.whatsapp}" target="_blank" rel="noreferrer">Hablar con ventas</a>
-                </div>
-                <div class="stats-row">
-                  ${dealer.stats
-                    .map(
-                      (stat) => `
-                        <article class="stat-card">
-                          <strong>${stat.value}</strong>
-                          <p>${stat.label}</p>
-                        </article>
-                      `
-                    )
-                    .join("")}
-                </div>
+          <section class="stock-showcase" id="stock">
+            <div class="section-heading section-heading--split">
+              <div>
+                <p class="eyebrow">Stock destacado</p>
+                <h2>Elegi una unidad y entra al detalle.</h2>
+                <p>El sitio abre mostrando vehiculos: foto, valor de referencia, datos rapidos y acceso directo a la ficha.</p>
               </div>
+              <a class="button button--ghost" href="https://wa.me/${dealer.whatsapp}" target="_blank" rel="noreferrer">Consultar stock</a>
+            </div>
+            <div class="carousel-shell">
+              <button class="carousel-button" type="button" data-carousel-prev="stock-carousel" aria-label="Ver vehiculos anteriores">‹</button>
+              <div class="inventory-carousel" id="stock-carousel">
+                ${dealer.inventory.map((vehicle) => buildInventorySlide(vehicle)).join("")}
+              </div>
+              <button class="carousel-button" type="button" data-carousel-next="stock-carousel" aria-label="Ver mas vehiculos">›</button>
+            </div>
+          </section>
 
-              <div class="hero-stage">
-                ${buildVehicleVisual(dealer.inventory[0], false)}
-                <div class="hero-stage__panel">
-                  <p>${dealer.supportMessage}</p>
-                  <strong>${dealer.promise}</strong>
-                  <small>${dealer.address}</small>
-                </div>
+          <section class="intro-strip">
+            <div class="intro-strip__copy">
+              <p class="eyebrow">${dealer.eyebrow}</p>
+              <h1>${dealer.heroTitle}</h1>
+              <p class="lead">${dealer.heroLead}</p>
+            </div>
+            <div class="intro-strip__side">
+              <div class="hero-actions">
+                <a class="button" href="#stock">Ver vehiculos</a>
+                <a class="button button--ghost" href="https://wa.me/${dealer.whatsapp}" target="_blank" rel="noreferrer">Hablar con ventas</a>
+              </div>
+              <div class="intro-strip__stats">
+                ${dealer.stats
+                  .map(
+                    (stat) => `
+                      <article class="quick-stat">
+                        <strong>${stat.value}</strong>
+                        <p>${stat.label}</p>
+                      </article>
+                    `
+                  )
+                  .join("")}
               </div>
             </div>
           </section>
@@ -220,28 +228,19 @@
               .join("")}
           </section>
 
-          <section class="inventory-section" id="stock">
-            <div class="section-heading">
-              <p class="eyebrow">Destacados</p>
-              <h2>Vehiculos listos para llamar la atencion.</h2>
-              <p>Elegimos una muestra del tipo de unidades que mejor se pueden presentar online para generar consultas.</p>
-            </div>
-            <div class="inventory-grid">
-              ${buildInventoryCards(dealer)}
-            </div>
-          </section>
-
           <section class="services-section" id="servicios">
             <div class="section-heading">
-              <p class="eyebrow">Atencion y servicio</p>
-              <h2>Una web que acompana la venta desde el primer mensaje.</h2>
+              <p class="eyebrow">Acompanamiento comercial</p>
+              <h2>El stock abre la puerta y el sitio ayuda a cerrar la consulta.</h2>
+              <p>Despues de mirar unidades, el cliente entiende rapido como seguir: escribir, pedir mas datos, coordinar visita o avanzar por financiacion.</p>
             </div>
             <div class="service-grid">
               ${dealer.services
                 .map(
-                  (service) => `
+                  (service, index) => `
                     <article class="service-card">
-                      <h3>${dealer.name}</h3>
+                      <span class="service-card__index">0${index + 1}</span>
+                      <h3>${index === 0 ? "Mostrar bien el stock" : index === 1 ? "Responder sin friccion" : "Dejar la venta encaminada"}</h3>
                       <p>${service}</p>
                     </article>
                   `
@@ -261,19 +260,6 @@
               <a class="button" href="https://wa.me/${dealer.whatsapp}" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
               <a class="button button--ghost" href="${dealer.mapUrl}" target="_blank" rel="noreferrer">Como llegar</a>
             </div>
-          </section>
-
-          <section class="testimonial-section">
-            ${dealer.testimonials
-              .map(
-                (item) => `
-                  <article class="quote-card">
-                    <p>"${item.quote}"</p>
-                    <strong>${item.author}</strong>
-                  </article>
-                `
-              )
-              .join("")}
           </section>
         </main>
 
@@ -321,8 +307,8 @@
       `
       : `
         <div class="vehicle-gallery__hint">
-          <strong>Listo para fotos reales</strong>
-          <p>Cuando sumes imagenes en este vehiculo, aca va a aparecer la galeria principal con miniaturas.</p>
+          <strong>Listo para recibir fotos reales</strong>
+          <p>Cuando cargues imagenes de esta unidad, aca se mostraran la principal y sus miniaturas para venderla mejor.</p>
         </div>
       `;
 
@@ -348,7 +334,7 @@
   function buildRelatedVehicles(dealer, currentVehicleId) {
     return dealer.inventory
       .filter((vehicle) => vehicle.id !== currentVehicleId)
-      .slice(0, 2)
+      .slice(0, 3)
       .map(
         (vehicle) => `
           <article class="related-card">
@@ -356,7 +342,7 @@
               ${buildVehicleVisual(vehicle, true)}
             </div>
             <div class="related-card__body">
-              <p class="micro-copy">${vehicle.year} | ${vehicle.km}</p>
+              <p class="micro-copy">${vehicle.year} · ${vehicle.km}</p>
               <h3>${vehicle.name}</h3>
               <p>${vehicle.description}</p>
               <a class="button button--ghost" href="./vehiculo.html?modelo=${vehicle.id}">Ver detalle</a>
@@ -383,23 +369,39 @@
         </header>
 
         <main class="vehicle-page">
+          <section class="vehicle-hero-head">
+            <div class="vehicle-hero-head__copy">
+              <a class="back-link" href="./index.html#stock">← Volver al stock</a>
+              <p class="eyebrow">${vehicle.badge}</p>
+              <h1>${vehicle.name}</h1>
+              <p class="lead">${vehicle.salesPitch}</p>
+              <div class="feature-chips">
+                ${vehicle.features.slice(0, 4).map((feature) => `<span class="feature-chip">${feature}</span>`).join("")}
+              </div>
+            </div>
+            <div class="vehicle-hero-head__price">
+              ${currencyTag(vehicle.price, vehicle.priceNote)}
+              <p>${vehicle.year} · ${vehicle.km} · ${vehicle.color}</p>
+              <div class="contact-band__actions">
+                <a class="button" href="${whatsappMessage(dealer, `Hola, me interesa el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar ahora</a>
+                <a class="button button--ghost" href="${phoneHref(dealer.phone)}">Llamar</a>
+              </div>
+            </div>
+          </section>
+
           <section class="vehicle-detail-grid">
             ${buildVehicleGallery(vehicle)}
 
             <aside class="vehicle-summary">
               <div class="vehicle-summary__top">
-                <p class="eyebrow">${vehicle.badge}</p>
-                <h1>${vehicle.name}</h1>
-                <p class="lead">${vehicle.salesPitch}</p>
-              </div>
-
-              <div class="vehicle-summary__price">
-                ${currencyTag(vehicle.price, vehicle.priceNote)}
-                <span class="vehicle-summary__meta">${vehicle.year} | ${vehicle.km}</span>
+                <p class="eyebrow">Informacion rapida</p>
+                <h2>Lo importante para decidir si queres seguir con esta unidad.</h2>
+                <p class="lead">${vehicle.description}</p>
               </div>
 
               <div class="vehicle-summary__cta">
-                <a class="button" href="https://wa.me/${dealer.whatsapp}?text=Hola%2C%20me%20interesa%20el%20${encodeURIComponent(vehicle.name)}" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+                <a class="button" href="${whatsappMessage(dealer, `Hola, quiero mas informacion del ${vehicle.name}`)}" target="_blank" rel="noreferrer">Quiero mas informacion</a>
+                <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, me gustaria pedir fotos y video del ${vehicle.name}`)}" target="_blank" rel="noreferrer">Pedir fotos y video</a>
                 <a class="button button--ghost" href="${dealer.mapUrl}" target="_blank" rel="noreferrer">Ver ubicacion</a>
               </div>
 
@@ -421,18 +423,50 @@
 
           <section class="vehicle-info-grid">
             <article class="detail-card detail-card--wide">
-              <p class="eyebrow">Sobre este vehiculo</p>
-              <h2>Una presentacion pensada para vender mejor.</h2>
+              <p class="eyebrow">Por que mirar esta unidad</p>
+              <h2>Una ficha pensada para que el interes siga despues del primer vistazo.</h2>
               <p>${vehicle.descriptionLong}</p>
               <p>${vehicle.hook}</p>
+              <div class="detail-points">
+                <div class="point-card">
+                  <strong>Buena primera impresion</strong>
+                  <p>${vehicle.segment} con una presentacion clara, precio visible y acceso directo a la consulta.</p>
+                </div>
+                <div class="point-card">
+                  <strong>Datos faciles de leer</strong>
+                  <p>Todo lo que suele mirar un comprador aparece ordenado: ano, kilometraje, caja, combustible y color.</p>
+                </div>
+                <div class="point-card">
+                  <strong>Salida comercial rapida</strong>
+                  <p>Si interesa, el siguiente paso ya esta listo: WhatsApp, llamada o pedido de fotos y video.</p>
+                </div>
+              </div>
             </article>
 
             <article class="detail-card">
-              <p class="eyebrow">Equipamiento</p>
-              <h2>Lo que mas mira el cliente</h2>
+              <p class="eyebrow">Equipamiento destacado</p>
+              <h2>Lo que mas suele inclinar la balanza</h2>
               <ul class="detail-list">
                 ${vehicle.features.map((feature) => `<li>${feature}</li>`).join("")}
               </ul>
+            </article>
+          </section>
+
+          <section class="sales-steps">
+            <article class="step-card">
+              <span>01</span>
+              <h3>Te interesa la unidad</h3>
+              <p>Ves fotos, datos rapidos y una propuesta clara para saber si encaja con lo que estas buscando.</p>
+            </article>
+            <article class="step-card">
+              <span>02</span>
+              <h3>Pedis mas material</h3>
+              <p>Con un clic podes solicitar mas fotos, video, ubicacion o detalles para seguir avanzando sin perder tiempo.</p>
+            </article>
+            <article class="step-card">
+              <span>03</span>
+              <h3>Pasas a la conversacion</h3>
+              <p>La ficha deja la consulta encaminada para que ventas tome la posta por WhatsApp o llamada.</p>
             </article>
           </section>
 
@@ -444,15 +478,15 @@
               <p>${dealer.hours}</p>
             </div>
             <div class="contact-band__actions">
-              <a class="button" href="https://wa.me/${dealer.whatsapp}?text=Hola%2C%20quiero%20mas%20info%20del%20${encodeURIComponent(vehicle.name)}" target="_blank" rel="noreferrer">Quiero mas informacion</a>
-              <a class="button button--ghost" href="${phoneHref(dealer.phone)}">Llamar ahora</a>
+              <a class="button" href="${whatsappMessage(dealer, `Hola, quiero avanzar con el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Quiero avanzar</a>
+              <a class="button button--ghost" href="${whatsappMessage(dealer, `Hola, quiero consultar si reciben un usado por el ${vehicle.name}`)}" target="_blank" rel="noreferrer">Consultar entrega</a>
             </div>
           </section>
 
           <section class="related-section">
             <div class="section-heading">
-              <p class="eyebrow">Tambien te puede interesar</p>
-              <h2>Otras opciones para seguir mirando.</h2>
+              <p class="eyebrow">Segui mirando</p>
+              <h2>Otras opciones del mismo concesionario.</h2>
             </div>
             <div class="related-grid">
               ${buildRelatedVehicles(dealer, vehicle.id)}
@@ -466,22 +500,22 @@
   function botReply(dealer, message) {
     const text = message.toLowerCase();
     if (text.includes("whatsapp") || text.includes("ventas") || text.includes("hablar")) {
-      return `Perfecto. Podes escribirnos ahora mismo al ${dealer.phone} o tocar el boton verde para seguir la charla con el equipo de ventas.`;
+      return `Perfecto. Podes escribirnos ahora mismo al ${dealer.phone} o tocar el boton verde para seguir la charla con ventas.`;
     }
     if (text.includes("pickup")) {
       const pickup = dealer.inventory.find((vehicle) => vehicle.segment === "Pickup");
       return pickup
-        ? `Si buscas una pickup, miraria primero la ${pickup.name}. Tiene ${pickup.km} y es una opcion muy fuerte para trabajo y uso diario.`
-        : "Contame un poco mas que uso le queres dar y te orientamos con una opcion de ese perfil.";
+        ? `Si estas mirando una pickup, arrancaria por la ${pickup.name}. Es una opcion fuerte para trabajar y moverte comodo.`
+        : "Contame para que la necesitas y te orientamos con una opcion de ese perfil.";
     }
     if (text.includes("suv")) {
       const suv = dealer.inventory.find((vehicle) => vehicle.segment === "SUV" || vehicle.segment === "Crossover");
       return suv
-        ? `Si queres una SUV, la ${suv.name} es una muy buena candidata. Tiene ${suv.km} y una presencia que gusta mucho.`
+        ? `Si queres una SUV, la ${suv.name} es una muy buena candidata. Tiene una presencia que llama mucho la atencion.`
         : "Tenemos alternativas interesantes para ese perfil. Si queres, seguimos la charla por WhatsApp.";
     }
     if (text.includes("financi")) {
-      return "Podemos orientarte con opciones para avanzar y contarte que camino te conviene segun el vehiculo que te guste.";
+      return "Podemos orientarte con opciones para avanzar y contarte que camino te conviene segun la unidad que te guste.";
     }
     if (text.includes("usado") || text.includes("entregar")) {
       return "Si tenes un usado, tambien podemos tomar tus datos y ayudarte a ver como encarar el cambio.";
@@ -585,6 +619,21 @@
     });
   }
 
+  function setupCarousels() {
+    const controls = document.querySelectorAll("[data-carousel-prev], [data-carousel-next]");
+    controls.forEach((control) => {
+      control.addEventListener("click", function () {
+        const targetId = control.dataset.carouselPrev || control.dataset.carouselNext;
+        const direction = control.dataset.carouselPrev ? -1 : 1;
+        const carousel = document.getElementById(targetId);
+        if (!carousel) return;
+        const firstCard = carousel.querySelector(".inventory-slide");
+        const step = firstCard ? firstCard.getBoundingClientRect().width + 18 : carousel.clientWidth * 0.9;
+        carousel.scrollBy({ left: step * direction, behavior: "smooth" });
+      });
+    });
+  }
+
   function renderHub() {
     const grid = document.getElementById("hub-grid");
     if (!grid) return;
@@ -599,6 +648,7 @@
     if (!dealer || !root) return;
     root.innerHTML = buildDealerPage(dealer);
     setupChat(dealer);
+    setupCarousels();
   }
 
   function renderVehicle() {
