@@ -190,23 +190,53 @@ select {
 /* ----------------------------------------------------------
    5. Header
    ---------------------------------------------------------- */
+/* Elite signature header — fixed, transparent by default, frosted on scroll.
+   Adapted for dark canvas: white text default, dark text when frosted. */
 .site-header {
-  position: sticky;
-  top: 16px;
-  z-index: 100;
-  margin: 16px auto 0;
-  width: min(1280px, calc(100% - 32px));
-  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: 100%;
+  margin: 0;
+  padding: 16px 32px;
   min-height: 64px;
-  padding: 12px 24px;
-  background: #ffffff;
+  background: transparent;
   border: none;
-  border-radius: 0; /* sharp - Ferrari */
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: var(--space-md);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* CTA inside header gets Elite rounded-glass radius (12px) */
+.site-header .button {
+  border-radius: 12px;
+  padding: 10px 20px;
+  min-height: 40px;
+  height: 40px;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.site-header .button:hover {
+  transform: scale(1.04);
 }
 
 .site-header > .site-shell,
@@ -233,9 +263,9 @@ body::before {
   pointer-events: none;
 }
 
-/* Spacing under sticky island */
+/* Spacing under fixed Elite header */
 .site-shell main {
-  padding-top: 32px;
+  padding-top: 96px;
 }
 
 .brand-mark {
@@ -252,7 +282,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #181818;
+  background: var(--color-primary);
   color: #ffffff;
   font-weight: 700;
   font-size: 16px;
@@ -278,12 +308,14 @@ body::before {
   line-height: 1.1;
 }
 
+/* Default (transparent over dark canvas): white text */
 .brand-mark__text strong {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #181818;
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
 .brand-mark__text small {
@@ -291,8 +323,17 @@ body::before {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #666666;
+  color: rgba(255, 255, 255, 0.75);
   margin-top: 2px;
+  transition: color 0.3s ease;
+}
+
+/* Frosted (scrolled): dark text on white overlay */
+.site-header.is-scrolled .brand-mark__text strong {
+  color: #181818;
+}
+.site-header.is-scrolled .brand-mark__text small {
+  color: #666666;
 }
 
 .main-nav {
@@ -301,19 +342,44 @@ body::before {
   gap: var(--space-md);
 }
 
+/* Default (transparent over dark canvas): white nav */
 .main-nav a {
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.65px;
   text-transform: uppercase;
-  color: #181818;
+  color: #ffffff;
   padding: 12px 0;
   position: relative;
   transition: color 0.2s ease;
 }
 
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.25s ease;
+}
+
 .main-nav a:hover {
+  color: var(--color-primary);
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+/* Frosted (scrolled): dark nav on white overlay */
+.site-header.is-scrolled .main-nav a {
+  color: #181818;
+}
+
+.site-header.is-scrolled .main-nav a:hover {
   color: var(--color-primary);
 }
 
@@ -1872,9 +1938,13 @@ body::before {
 
 @media (max-width: 768px) {
   .site-header {
-    width: calc(100% - 16px);
-    padding: 10px 14px;
+    width: 100%;
+    padding: 12px 16px;
     gap: 12px;
+  }
+
+  .site-shell main {
+    padding-top: 84px;
   }
 
   .main-nav {
@@ -1882,9 +1952,11 @@ body::before {
   }
 
   .site-header .button {
-    padding: 8px 16px;
-    min-height: 40px;
+    padding: 8px 14px;
+    min-height: 36px;
+    height: 36px;
     font-size: 12px;
+    border-radius: 12px;
   }
 
   .main-nav a {

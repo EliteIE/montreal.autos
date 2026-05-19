@@ -641,6 +641,16 @@
     });
   }
 
+  function setupHeaderScroll() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    const onScroll = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 10);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   function renderHub() {
     const grid = document.getElementById("hub-grid");
     if (!grid) return;
@@ -656,6 +666,7 @@
     root.innerHTML = buildDealerPage(dealer);
     setupChat(dealer);
     setupCarousels();
+    setupHeaderScroll();
   }
 
   function renderVehicle() {
@@ -667,6 +678,7 @@
     const vehicle = dealer.inventory.find((item) => item.id === vehicleId) || dealer.inventory[0];
     root.innerHTML = buildVehiclePage(dealer, vehicle);
     setupVehicleGallery();
+    setupHeaderScroll();
   }
 
   if (page === "hub") renderHub();
