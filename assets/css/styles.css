@@ -490,16 +490,18 @@ body::before {
 
 .intro-strip__copy {
   max-width: 760px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
 .intro-strip__copy h1 {
-  font-size: clamp(40px, 7vw, 80px);
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -1.6px;
+  letter-spacing: -1.2px;
+  word-break: break-word;
   color: var(--color-ink);
 }
 
@@ -507,11 +509,12 @@ body::before {
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-body);
-  max-width: 600px;
+  max-width: 60ch;
 }
 
 .intro-strip__side {
   margin-top: var(--space-lg);
+  min-width: 0;
 }
 
 .hero-actions {
@@ -519,6 +522,11 @@ body::before {
   flex-wrap: wrap;
   gap: var(--space-xs);
   margin-top: var(--space-sm);
+}
+
+.hero-actions .button {
+  flex: 1 1 220px;
+  justify-content: center;
 }
 
 .intro-strip__stats {
