@@ -190,53 +190,59 @@ select {
 /* ----------------------------------------------------------
    5. Header
    ---------------------------------------------------------- */
-/* Elite signature header — fixed, transparent by default, frosted on scroll.
-   Adapted for dark canvas: white text default, dark text when frosted. */
+/* ELITE SIGNATURE PILL ISLAND — replicado de elite-site/Navbar.tsx
+   Pill rounded-full, fixed top:12px, max-width 72rem, white/82 frosted */
 .site-header {
   position: fixed;
-  top: 0;
+  top: 12px;
   left: 0;
   right: 0;
   z-index: 50;
-  width: 100%;
-  margin: 0;
-  padding: 16px 32px;
-  min-height: 64px;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  width: auto;
+  height: 56px;
+  min-height: 56px;
+  margin: 0 16px;
+  padding: 0 24px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  box-shadow: 0 12px 45px rgba(15, 23, 42, 0.18);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
-    box-shadow 0.3s ease, padding 0.3s ease;
+  gap: 20px;
+  pointer-events: auto;
 }
 
-.site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.82);
-  -webkit-backdrop-filter: blur(10px) saturate(160%);
-  backdrop-filter: blur(10px) saturate(160%);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-  padding-top: 12px;
-  padding-bottom: 12px;
+@media (min-width: 768px) {
+  .site-header {
+    margin: 0 auto;
+    max-width: 72rem;
+  }
 }
 
-/* CTA inside header gets Elite rounded-glass radius (12px) */
+/* CTA Rosso Corsa em pill dentro da ilha (assinatura Ferrari preservada) */
 .site-header .button {
-  border-radius: 12px;
-  padding: 10px 20px;
-  min-height: 40px;
-  height: 40px;
+  height: 36px;
+  min-height: 36px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid var(--color-primary);
   font-size: 13px;
+  font-weight: 700;
   letter-spacing: 1.2px;
-  transition: background-color 0.2s ease, border-color 0.2s ease,
-    transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .site-header .button:hover {
-  transform: scale(1.04);
+  transform: translateY(-1px);
+  background: var(--color-primary-active);
+  border-color: var(--color-primary-active);
 }
 
 .site-header > .site-shell,
@@ -263,9 +269,16 @@ body::before {
   pointer-events: none;
 }
 
-/* Spacing under fixed Elite header */
+/* Spacing under floating Elite pill header */
 .site-shell main {
   padding-top: 96px;
+}
+
+/* Reduce brand-mark media inside the compact pill */
+.site-header .brand-mark__media {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
 }
 
 .brand-mark {
@@ -308,14 +321,13 @@ body::before {
   line-height: 1.1;
 }
 
-/* Default (transparent over dark canvas): white text */
+/* Brand-mark inside the white frosted pill: dark text */
 .brand-mark__text strong {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #ffffff;
-  transition: color 0.3s ease;
+  color: #1d1d1f;
 }
 
 .brand-mark__text small {
@@ -323,64 +335,31 @@ body::before {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: #86868b;
   margin-top: 2px;
-  transition: color 0.3s ease;
-}
-
-/* Frosted (scrolled): dark text on white overlay */
-.site-header.is-scrolled .brand-mark__text strong {
-  color: #181818;
-}
-.site-header.is-scrolled .brand-mark__text small {
-  color: #666666;
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 28px;
 }
 
-/* Default (transparent over dark canvas): white nav */
+/* Nav links inside the white frosted pill (Apple-like neutral gray) */
 .main-nav a {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0.65px;
-  text-transform: uppercase;
-  color: #ffffff;
-  padding: 12px 0;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  color: #424245;
+  padding: 6px 0;
   position: relative;
   transition: color 0.2s ease;
 }
 
-.main-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 4px;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width 0.25s ease;
-}
-
 .main-nav a:hover {
-  color: var(--color-primary);
-}
-
-.main-nav a:hover::after {
-  width: 100%;
-}
-
-/* Frosted (scrolled): dark nav on white overlay */
-.site-header.is-scrolled .main-nav a {
-  color: #181818;
-}
-
-.site-header.is-scrolled .main-nav a:hover {
-  color: var(--color-primary);
+  color: #1d1d1f;
 }
 
 /* ----------------------------------------------------------
@@ -1938,8 +1917,10 @@ body::before {
 
 @media (max-width: 768px) {
   .site-header {
-    width: 100%;
-    padding: 12px 16px;
+    height: 52px;
+    min-height: 52px;
+    margin: 0 12px;
+    padding: 0 14px;
     gap: 12px;
   }
 
@@ -1952,11 +1933,11 @@ body::before {
   }
 
   .site-header .button {
-    padding: 8px 14px;
-    min-height: 36px;
-    height: 36px;
+    padding: 6px 14px;
+    min-height: 32px;
+    height: 32px;
     font-size: 12px;
-    border-radius: 12px;
+    border-radius: 9999px;
   }
 
   .main-nav a {
